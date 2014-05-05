@@ -1,0 +1,265 @@
+{
+    "channels": [
+        {
+            "index": "MSNVideo",
+            "name": "MSN Video",
+            "title": "Search News Videos",
+            "description": "Search through the sound tracks of over 150,000 MSNBC News video snippets. Click on search-result text snippets to navigate directly to keyword matches in the video. Type a query into the search box above, or try one of these example queries:",
+            "query": ["microsoft", "stock market"],
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "All",
+            "name": "All",
+            "title": "Search through Videos from selected Microsoft Sites",
+            "description": "We search through the audio, not just text. Search through the sound tracks of over 20,000 videos on this site from different sources. Click on search-result text snippets to navigate directly to keyword matches in the video. Select the source content from the tabs and type a query into the search box above, or try one of these example queries:",
+            "query": ["blob storage", "speech recognition", "mobile sdk", "parallel linq"],
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/en-us/groups/speech/" }
+            ]
+        },
+        {
+            "index": "build2011",
+            "name": "Build 2011",
+            "description": "BUILD is a new event that shows modern hardware and software developers how to take advantage of the future of Windows. Learn how to work with all the new touch-centric user experience to create fast, fluid, and dynamic applications that leverage the power and flexibility of Windows, used by more than a billion people around the world."
+        },
+        {
+            "index": "Mix",
+            "name": "MIX",
+            "title": "Search Talk Videos from MIX",
+            "description": "We search through the audio, not just text. Search through the sound tracks of about 150 talks from the Microsoft MIX Conference. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video.",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "Channel9",
+            "name": "Channel 9",
+            "title": "Search Talk Videos from Channel9",
+            "description": "We search through the audio, not just text. Search through the sound tracks of over 3000 videos from Channel9. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video.",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ],
+            "update": "Jun 24, 2012"
+        },
+        {
+            "index": "Audioboo",
+            "name": "Audioboo",
+            "title": "Search selection of videos from Audioboo.com",
+            "description": "Search for spoken words in a selection of videos from audioboo.com. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video. Try the sample queries below:",
+            "query": ["football", "christmas"],
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "IOP",
+            "name": "IOP",
+            "title": "Search selection of videos from Innovation Outreach Program",
+            "description": "Search for spoken words in a selection of videos from the Innovation Outreach Program. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video. Try the sample queries below:",
+            "query": ["augmented reality", "\"big data\""],
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "brandaffinity",
+            "name": "brandaffinity",
+            "description": "Search for spoken words. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video. Try the sample queries below:",
+            "query": ["fox sport", "boston celtics"],
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "courtsmart",
+            "name": "courtsmart",
+            "description": "Courtrooom proceedings. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the media file. or try one of these example queries:",
+            "query": ["robbery", "under influence"]
+        },
+        {
+            "index": "polycom",
+            "name": "polycom",
+            "title": "Search test media files from polycom",
+            "description": "We search through the audio, not just text. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the media file.",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "SQLBits",
+            "name": "SQLBits",
+            "title": "Search Talk Videos from SQLBits",
+            "description": "We search through the audio, not just text. Search through the sound tracks of about 150 talks from the SQLBits. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video.",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "NightlyNewsNoEnclosures",
+            "name": "MSNBC Nightly News",
+            "title": "Search MSN Videos",
+            "description": "Search through MSNBC Nightly News videos. Click on search-result text snippets to navigate directly to keyword matches in the video. Type a query into the search box above, or try one of these example queries:",
+            "query": ["libya", "u.s. credit rating"],
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "TED2011",
+            "name": "TED 2011",
+            "title": "Search Talk Videos from the TED conference",
+            "description": "We search through the audio, not just text. Search through the sound tracks of about 250 talks from the popular TED.com (Technology–Entertainment–Design) conference website. Click on search-result text snippets to navigate directly to keyword matches in the video. Type a query into the search box above, or try one of these example queries:",
+            "query": ["education", "climate change", "wikipedia"],
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "Dell",
+            "name": "Dell",
+            "title": "Search educational videos from Dell",
+            "description": "Type a query into the search box above and click on the search-result text snippets to play the video from where the term was spoken. Some example search query terms for this content are: \"virtualization\", \"registry\", and \"power edge servers\"",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "ted",
+            "name": "TED",
+            "title": "TED conference videos",
+            "description": "Type a query into the search box above and click on the search-result text snippets to play the video from where the term was spoken. Some example search query terms for this content are: \"health\", \"energy\", and \"climate\"",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "Foundry38",
+            "name": "Foundry38",
+            "title": "Australian property management program",
+            "description": "Search through the audio recordings of the Australian Sky News business channel property investment program hosted by Margaret Lomas from Destiny Financial. Type a query into the search box above and click on the search-result text snippets to navigate directly to keyword matches in the audio. Try \"brisbane\" \"queensland\" and \"interest rate\" to get you started.",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "stateofgeorgia",
+            "name": "State of Georgia",
+            "title": "Search Talk Videos from the State of Georgia",
+            "description": "Search through the sound tracks of about 65 public recordings from the State of Georgia government. Click on search-result text snippets to navigate directly to keyword matches in the video.",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "Microsoft_PDC",
+            "name": "PDC",
+            "title": "Search Talk Videos from PDC",
+            "description": "We search through the audio, not just text. Search through the sound tracks of about 150 talks from the Microsoft Professional Developers Conference. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video.",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "BritishLib",
+            "name": "British Library",
+            "title": "Search Talk Videos from British Library",
+            "description": "We search through the audio, not just text. Search through the sound tracks of about 60 videos from British Library. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video.",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "Granicus_Arizona",
+            "name": "Granicus",
+            "title": "Search Talk Videos from Granicus",
+            "description": "Search through the sound tracks of about 800 public recordings from Granicus Inc.. Click on search-result text snippets to navigate directly to keyword matches in the video. Some sample keywords to search in this archive are \"energy\"\"medical liability\" and \"education\".",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "ORLive",
+            "name": "ORLive",
+            "title": "Search Talk Videos on ORLive",
+            "description": "Search through about 20 online videos from ORLive, the leading surgical broadcasting company. Click on search-result text snippets to navigate directly to keyword matches in the video. Type a query into the search box above, or try one of these example queries:",
+            "query": ["epicardial", "heart attack"],
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "ORLive421",
+            "name": "ORLive421",
+            "title": "Search Talk Videos on ORLive",
+            "description": "Search through about 20 online videos from ORLive, the leading surgical broadcasting company. Click on search-result text snippets to navigate directly to keyword matches in the video. Type a query into the search box above, or try one of these example queries:",
+            "query": ["epicardial", "aneurysm", "heart attack"],
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "SDTA",
+            "name": "UCSD Digital Archives",
+            "title": "Search interviews from UCSD San Diego Digital Archives",
+            "description": "Type a search term or phrase or try one of the examples below. Click on search-result text snippets to navigate directly to where the term or phrase was spoken.",
+            "query": ["innovation", "patenting process", "venture capital"],
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "VU_University",
+            "name": "VU_University",
+            "title": "Search test media files from VU_University",
+            "description": "We search through the audio, not just text. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the media file.",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "StateOfGeorgia",
+            "name": "State of Georgia",
+            "title": "Search Talk Videos from the State of Georgia",
+            "description": "Search through the sound tracks of about 65 public recordings from the State of Georgia government. Click on search-result text snippets to navigate directly to keyword matches in the video.",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        },
+        {
+            "index": "OSTI_mva",
+            "name": "OSTI",
+            "title": "Search Talk Videos from the OSTI",
+            "description": "Search through the sound tracks of about 200 recordings from the Office of Science and Technology Information. Click on search-result text snippets to navigate directly to keyword matches in the video.",
+            "power": [
+                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
+                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            ]
+        }
+    ]
+}

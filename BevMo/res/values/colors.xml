@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="welcome_title_color">#ccff33</color>
+    <color name="welcome_content_color">#fff</color>
+    <color name="list_child_background_color">#ccc</color>
+</resources>
