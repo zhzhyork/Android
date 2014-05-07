@@ -9,8 +9,9 @@ public class SearchQuery {
 	public SearchQuery() {
 	}
 	
-	public void setText(String text) { 
-		mText = text; 
+	public void setText(String text) {
+		text = text.trim().replace(" ", "%20");
+		mText = text;
 	}
 	
 	public String getText() { 
