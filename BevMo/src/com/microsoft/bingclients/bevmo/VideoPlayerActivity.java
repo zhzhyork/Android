@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.os.Bundle;
@@ -48,6 +49,7 @@ public class VideoPlayerActivity extends Activity {
         video.setOnPreparedListener(new OnPreparedListener() {
 
             public void onPrepared(MediaPlayer player) {
+            	// TODO Auto-generated method stub
             	mProgressDialog.dismiss();
             	player.seekTo((int)(time * 1000));
             	player.start();
@@ -61,7 +63,18 @@ public class VideoPlayerActivity extends Activity {
 			public boolean onError(MediaPlayer player, int what, int extra) {
 				// TODO Auto-generated method stub
 				mProgressDialog.dismiss();
+				finish();
 				return false;
+			}
+        	
+        });
+        
+        video.setOnCompletionListener(new OnCompletionListener() {
+
+			@Override
+			public void onCompletion(MediaPlayer arg0) {
+				// TODO Auto-generated method stub
+				finish();
 			}
         	
         });
