@@ -1,8 +1,11 @@
 package com.microsoft.bingclients.bevmo;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 import com.microsoft.bingclients.bevmo.models.Channel;
+import com.microsoft.bingclients.bevmo.models.Constant;
 import com.microsoft.bingclients.bevmo.models.SearchQuery;
 import com.microsoft.bingclients.bevmo.models.SearchResults;
 import com.microsoft.bingclients.bevmo.utils.RssReader;
@@ -152,7 +155,7 @@ public class MainActivity extends ActionBarActivity
     	return mVideos;
     }
     
-    private void search(String key) {
+    public void search(String key) {
     	new SearchTask(this).execute(key); 
     }
     
@@ -176,6 +179,34 @@ public class MainActivity extends ActionBarActivity
 
     	@Override
     	protected SearchResults doInBackground(String... key) {
+    		try {
+    			StringBuffer data = new StringBuffer("");
+    			FileInputStream inputStream = openFileInput(Constant.HISTORY_FILE_NAME);
+    			byte[] dataArray = new byte[1024];
+    		    int n;
+    		    while ((n = inputStream.read(dataArray)) != -1) {
+    		    	data.append(new String(dataArray, 0, n));
+    		    }
+    		    inputStream.close();
+    		    
+    		    if (!data.toString().startsWith(key[0] + ";") && !data.toString().contains(";" + key[0] + ";")) {
+    		    	String[] items = data.toString().split(";");
+        		    if (items != null && items.length >= Constant.HISTORY_MAX_COUNT) {
+        		    	data.delete(0, data.length());
+        		    	for (int i = items.length - Constant.HISTORY_MAX_COUNT + 1; i < items.length; i ++) {
+        		    		data.append(items[i] + ";");
+        		    	}
+        		    }
+
+        			FileOutputStream outputStream = openFileOutput(Constant.HISTORY_FILE_NAME, Context.MODE_PRIVATE);
+        			String output = data.insert(0, key[0] + ";").toString();
+        			outputStream.write(output.getBytes());
+        			outputStream.close();
+    		    }
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}
+    		
     		SearchQuery query = new SearchQuery();
     		query.setText(key[0]);
     		query.setIndex(mIndex);

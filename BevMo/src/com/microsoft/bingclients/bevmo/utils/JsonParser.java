@@ -39,10 +39,14 @@ public class JsonParser {
 		        channel.setDescription(jsonObject.optString("description"));
 		        channel.setUpdate(jsonObject.optString("update"));
 		        
-		        JSONArray queries = jsonObject.optJSONArray("query");
-		        if (queries != null) {
-		        	for (int j = 0; j < queries.length(); j++) {
-			        	channel.addQuery(queries.optString(j));
+		        JSONArray recommendations = jsonObject.optJSONArray("recommendation");
+		        if (recommendations != null) {
+		        	for (int j = 0; j < recommendations.length(); j++) {
+		        		JSONObject recommendation = recommendations.optJSONObject(j);
+			        	channel.addRecommendation(recommendation.optString("title"), 
+			        			recommendation.optString("image"), 
+			        			recommendation.optString("duration"),
+			        			recommendation.optString("url"));
 			        }
 		        }
 		        

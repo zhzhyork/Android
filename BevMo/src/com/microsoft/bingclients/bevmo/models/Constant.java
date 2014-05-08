@@ -13,4 +13,8 @@ public class Constant {
     public static final String BUNDLE_STRING_URL = "Url";
 	
 	public static final String BUNDLE_FLOAT_TIME = "Time";
+	
+	public static final String HISTORY_FILE_NAME = "history";
+	
+	public static final int HISTORY_MAX_COUNT = 10;
 }

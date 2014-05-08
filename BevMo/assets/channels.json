@@ -5,7 +5,20 @@
             "name": "MSN Video",
             "title": "Search News Videos",
             "description": "Search through the sound tracks of over 150,000 MSNBC News video snippets. Click on search-result text snippets to navigate directly to keyword matches in the video. Type a query into the search box above, or try one of these example queries:",
-            "query": ["microsoft", "stock market"],
+            "recommendation": [
+                {
+                    "title": "How the Xbox One gets to Wal-Mart",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/6b67327c-fa58-4ee6-a3e0-b2bb11a2ef36.job.aib.thumb.jpg",
+                    "duration": "00:02:11",
+                    "url": "http://content4.catalog.video.msn.com/e2/ds/f7952ef5-0cd2-4add-b03d-c07c1c47632c.mp4"
+                }, 
+                {
+                    "title": "The Top Ten Stocks for Nov. 29",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/413c12c3-39f0-40e6-a0e6-5970f7569a39.job.aib.thumb.jpg",
+                    "duration": "00:03:42",
+                    "url": "http://content5.catalog.video.msn.com/e2/ds/a7de4933-4baa-4129-9df7-083060ad4451.mp4"
+                }
+            ],
             "power": [
                 { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
                 { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
@@ -16,44 +29,44 @@
             "name": "All",
             "title": "Search through Videos from selected Microsoft Sites",
             "description": "We search through the audio, not just text. Search through the sound tracks of over 20,000 videos on this site from different sources. Click on search-result text snippets to navigate directly to keyword matches in the video. Select the source content from the tabs and type a query into the search box above, or try one of these example queries:",
-            "query": ["blob storage", "speech recognition", "mobile sdk", "parallel linq"],
+            "recommendation": [
+                {
+                    "title": "Johansson's 'Her' voiceover could make Oscar history",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/b8c04a7b-91d3-47b6-8d77-765db5d38f3a.job.aib.thumb.jpg",
+                    "duration": "00:01:57",
+                    "url": "http://content3.catalog.video.msn.com/e2/ds/8bf9e949-b59d-4d0d-b643-95f166602a03.mp4"
+                },
+                {
+                    "title": "What's new for UC development in Lync 2013 and Exchange 2013",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/9ed6e4ab-cd40-4f4b-b128-54d0b741ec91.job.aib.thumb.jpg",
+                    "duration": "00:24:34",
+                    "url": "http://content2.catalog.video.msn.com/e2/ds/72869056-b8cc-4c00-9da7-f75a710a8c8f.mp4"
+                }
+            ],
             "power": [
                 { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
                 { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/en-us/groups/speech/" }
             ]
         },
         {
-            "index": "build2011",
-            "name": "Build 2011",
-            "description": "BUILD is a new event that shows modern hardware and software developers how to take advantage of the future of Windows. Learn how to work with all the new touch-centric user experience to create fast, fluid, and dynamic applications that leverage the power and flexibility of Windows, used by more than a billion people around the world."
-        },
-        {
-            "index": "Mix",
-            "name": "MIX",
-            "title": "Search Talk Videos from MIX",
-            "description": "We search through the audio, not just text. Search through the sound tracks of about 150 talks from the Microsoft MIX Conference. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video.",
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
-            ]
-        },
-        {
-            "index": "Channel9",
-            "name": "Channel 9",
-            "title": "Search Talk Videos from Channel9",
-            "description": "We search through the audio, not just text. Search through the sound tracks of over 3000 videos from Channel9. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video.",
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
-            ],
-            "update": "Jun 24, 2012"
-        },
-        {
             "index": "Audioboo",
             "name": "Audioboo",
             "title": "Search selection of videos from Audioboo.com",
             "description": "Search for spoken words in a selection of videos from audioboo.com. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video. Try the sample queries below:",
-            "query": ["football", "christmas"],
+            "recommendation": [
+                {
+                    "title": "NFL on FOX Preview: AZ/PHI",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/1181640e-3abf-48fe-94dc-838b314c0627.job.aib.thumb.jpg",
+                    "duration": "00:01:08",
+                    "url": "http://fsvideoprod.edgesuite.net/video/Fox_Sports_Production/854/698/2_f_131130_az_phi_remote1_web_400.mp4"
+                }, 
+                {
+                    "title": "Thieves target busy shoppers during holiday season",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/e4415fad-b524-4cae-9d65-38e502fa1d49.job.aib.thumb.jpg",
+                    "duration": "00:02:16",
+                    "url": "http://content5.catalog.video.msn.com/e2/ds/9f736812-262f-496f-b21d-219838942560.mp4"
+                }
+            ],
             "power": [
                 { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
                 { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
@@ -64,7 +77,14 @@
             "name": "IOP",
             "title": "Search selection of videos from Innovation Outreach Program",
             "description": "Search for spoken words in a selection of videos from the Innovation Outreach Program. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video. Try the sample queries below:",
-            "query": ["augmented reality", "\"big data\""],
+            "recommendation": [
+                {
+                    "title": "Translation glasses seen as Olympic boon for tourists",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/20a14927-f96c-46c4-9f14-cf8ccde05aac.job.aib.thumb.jpg",
+                    "duration": "00:01:27",
+                    "url": "http://content5.catalog.video.msn.com/e2/ds/3370f714-219d-45c5-b9c6-202f373ae6b6.mp4"
+                }
+            ],
             "power": [
                 { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
                 { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
@@ -74,7 +94,20 @@
             "index": "brandaffinity",
             "name": "brandaffinity",
             "description": "Search for spoken words. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video. Try the sample queries below:",
-            "query": ["fox sport", "boston celtics"],
+            "recommendation": [
+                {
+                    "title": "Pizza Hut Play of the Day: Week 14",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/9c4d40ce-e46f-481f-afd5-b0efd43f91cd.job.aib.thumb.jpg",
+                    "duration": "00:01:43",
+                    "url": "http://fsvideoprod.edgesuite.net/video/Fox_Sports_Production/945/515/3_cfb_131130_pizzahut_playyofday_web_400.mp4"
+                }, 
+                {
+                    "title": "1987 Bon Jovi Hit Back Onto Charts",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/ecf2eb63-854a-4cf3-96fd-578035322ecf.job.aib.thumb.jpg",
+                    "duration": "00:01:47",
+                    "url": "http://content5.catalog.video.msn.com/e2/ds/ed1cf30e-a221-4935-86c9-e4561fe97546.mp4"
+                }
+            ],
             "power": [
                 { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
                 { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
@@ -84,26 +117,19 @@
             "index": "courtsmart",
             "name": "courtsmart",
             "description": "Courtrooom proceedings. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the media file. or try one of these example queries:",
-            "query": ["robbery", "under influence"]
-        },
-        {
-            "index": "polycom",
-            "name": "polycom",
-            "title": "Search test media files from polycom",
-            "description": "We search through the audio, not just text. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the media file.",
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
-            ]
-        },
-        {
-            "index": "SQLBits",
-            "name": "SQLBits",
-            "title": "Search Talk Videos from SQLBits",
-            "description": "We search through the audio, not just text. Search through the sound tracks of about 150 talks from the SQLBits. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video.",
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
+            "recommendation": [
+                {
+                    "title": "Let It Ride: Week 14",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/e9fb133b-0763-422d-832a-49956ab199eb.job.aib.thumb.jpg",
+                    "duration": "00:10:08",
+                    "url": "http://fsvideoprod.edgesuite.net/video/Fox_Sports_Production/420/114/3_cfb_131129_letitride_online_web_400.mp4"
+                }, 
+                {
+                    "title": "Will 6 Fewer Days Dent Holiday Retail Sales?",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/8fd2e31a-92a9-4f4d-b9b2-dd76540874a1.job.aib.thumb.jpg",
+                    "duration": "00:02:34",
+                    "url": "http://content3.catalog.video.msn.com/e2/ds/02152a29-7306-4f66-aa2e-09b1cdf1563a.mp4"
+                }
             ]
         },
         {
@@ -111,7 +137,20 @@
             "name": "MSNBC Nightly News",
             "title": "Search MSN Videos",
             "description": "Search through MSNBC Nightly News videos. Click on search-result text snippets to navigate directly to keyword matches in the video. Type a query into the search box above, or try one of these example queries:",
-            "query": ["libya", "u.s. credit rating"],
+            "recommendation": [
+                {
+                    "title": "A show of force in Benghazi",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/b3d70762-4e60-44d8-91e9-c60069405c66.job.aib.thumb.jpg",
+                    "duration": "00:01:02",
+                    "url": "http://content2.catalog.video.msn.com/e2/ds/cf96b37d-1493-4d41-9e6d-c4e62a3810db.mp4"
+                }, 
+                {
+                    "title": "Danger of a US Credit Rating Downgrade",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/ae189573-791d-45e3-adfc-a794f7bb688f.job.aib.thumb.jpg",
+                    "duration": "00:03:59",
+                    "url": "http://content2.catalog.video.msn.com/e2/ds/0584452f-d91c-4ed9-a3dc-ef251fcc0d9b.mp4"
+                }
+            ],
             "power": [
                 { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
                 { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
@@ -122,77 +161,20 @@
             "name": "TED 2011",
             "title": "Search Talk Videos from the TED conference",
             "description": "We search through the audio, not just text. Search through the sound tracks of about 250 talks from the popular TED.com (Technology–Entertainment–Design) conference website. Click on search-result text snippets to navigate directly to keyword matches in the video. Type a query into the search box above, or try one of these example queries:",
-            "query": ["education", "climate change", "wikipedia"],
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
-            ]
-        },
-        {
-            "index": "Dell",
-            "name": "Dell",
-            "title": "Search educational videos from Dell",
-            "description": "Type a query into the search box above and click on the search-result text snippets to play the video from where the term was spoken. Some example search query terms for this content are: \"virtualization\", \"registry\", and \"power edge servers\"",
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
-            ]
-        },
-        {
-            "index": "ted",
-            "name": "TED",
-            "title": "TED conference videos",
-            "description": "Type a query into the search box above and click on the search-result text snippets to play the video from where the term was spoken. Some example search query terms for this content are: \"health\", \"energy\", and \"climate\"",
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
-            ]
-        },
-        {
-            "index": "Foundry38",
-            "name": "Foundry38",
-            "title": "Australian property management program",
-            "description": "Search through the audio recordings of the Australian Sky News business channel property investment program hosted by Margaret Lomas from Destiny Financial. Type a query into the search box above and click on the search-result text snippets to navigate directly to keyword matches in the audio. Try \"brisbane\" \"queensland\" and \"interest rate\" to get you started.",
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
-            ]
-        },
-        {
-            "index": "stateofgeorgia",
-            "name": "State of Georgia",
-            "title": "Search Talk Videos from the State of Georgia",
-            "description": "Search through the sound tracks of about 65 public recordings from the State of Georgia government. Click on search-result text snippets to navigate directly to keyword matches in the video.",
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
-            ]
-        },
-        {
-            "index": "Microsoft_PDC",
-            "name": "PDC",
-            "title": "Search Talk Videos from PDC",
-            "description": "We search through the audio, not just text. Search through the sound tracks of about 150 talks from the Microsoft Professional Developers Conference. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video.",
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
-            ]
-        },
-        {
-            "index": "BritishLib",
-            "name": "British Library",
-            "title": "Search Talk Videos from British Library",
-            "description": "We search through the audio, not just text. Search through the sound tracks of about 60 videos from British Library. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the video.",
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
-            ]
-        },
-        {
-            "index": "Granicus_Arizona",
-            "name": "Granicus",
-            "title": "Search Talk Videos from Granicus",
-            "description": "Search through the sound tracks of about 800 public recordings from Granicus Inc.. Click on search-result text snippets to navigate directly to keyword matches in the video. Some sample keywords to search in this archive are \"energy\"\"medical liability\" and \"education\".",
+            "recommendation": [
+                {
+                    "title": "UN climate talks limp toward deal",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/bed439e3-d3f6-4ef3-b281-d4da524617ea.job.aib.thumb.jpg",
+                    "duration": "00:01:05",
+                    "url": "http://content3.catalog.video.msn.com/e2/ds/5010f00e-80b6-41d5-b2d4-019647256636.mp4"
+                }, 
+                {
+                    "title": "Is Wikipedia a Credible Source?",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/fd16e99e-c18e-4857-8c46-a8283beab46a.job.aib.thumb.jpg",
+                    "duration": "00:03:19",
+                    "url": "http://content2.catalog.video.msn.com/e2/ds/f219b29e-3226-4adf-9aa3-d505ec4e7a26.mp4"
+                }
+            ],
             "power": [
                 { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
                 { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
@@ -203,7 +185,14 @@
             "name": "ORLive",
             "title": "Search Talk Videos on ORLive",
             "description": "Search through about 20 online videos from ORLive, the leading surgical broadcasting company. Click on search-result text snippets to navigate directly to keyword matches in the video. Type a query into the search box above, or try one of these example queries:",
-            "query": ["epicardial", "heart attack"],
+            "recommendation": [
+                {
+                    "title": "Safe Winter Driving: Ease Up on the Gas",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/4cd95e0b-1165-4422-814c-a4ff97cd9eb2.job.aib.thumb.jpg",
+                    "duration": "00:03:38",
+                    "url": "http://content5.catalog.video.msn.com/e2/ds/a50993ff-3dbd-447c-bcd1-c654f4fbbb73.mp4"
+                }
+            ],
             "power": [
                 { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
                 { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
@@ -214,7 +203,20 @@
             "name": "ORLive421",
             "title": "Search Talk Videos on ORLive",
             "description": "Search through about 20 online videos from ORLive, the leading surgical broadcasting company. Click on search-result text snippets to navigate directly to keyword matches in the video. Type a query into the search box above, or try one of these example queries:",
-            "query": ["epicardial", "aneurysm", "heart attack"],
+            "recommendation": [
+                {
+                    "title": "Fruit & Your Blood Vessels",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/10214227-7dfd-46bb-aa74-a2bdfa72b8aa.job.aib.thumb.jpg",
+                    "duration": "00:01:16",
+                    "url": "http://content4.catalog.video.msn.com/e2/ds/469b7007-6d2b-44ae-a9be-649238f72898.mp4"
+                }, 
+                {
+                    "title": "Safe Winter Driving: Ease Up on the Gas",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/4cd95e0b-1165-4422-814c-a4ff97cd9eb2.job.aib.thumb.jpg",
+                    "duration": "00:03:38",
+                    "url": "http://content5.catalog.video.msn.com/e2/ds/a50993ff-3dbd-447c-bcd1-c654f4fbbb73.mp4"
+                }
+            ],
             "power": [
                 { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
                 { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
@@ -225,37 +227,20 @@
             "name": "UCSD Digital Archives",
             "title": "Search interviews from UCSD San Diego Digital Archives",
             "description": "Type a search term or phrase or try one of the examples below. Click on search-result text snippets to navigate directly to where the term or phrase was spoken.",
-            "query": ["innovation", "patenting process", "venture capital"],
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
-            ]
-        },
-        {
-            "index": "VU_University",
-            "name": "VU_University",
-            "title": "Search test media files from VU_University",
-            "description": "We search through the audio, not just text. Type a query into the search box above. Click on search-result text snippets to navigate directly to keyword matches in the media file.",
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
-            ]
-        },
-        {
-            "index": "StateOfGeorgia",
-            "name": "State of Georgia",
-            "title": "Search Talk Videos from the State of Georgia",
-            "description": "Search through the sound tracks of about 65 public recordings from the State of Georgia government. Click on search-result text snippets to navigate directly to keyword matches in the video.",
-            "power": [
-                { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
-                { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }
-            ]
-        },
-        {
-            "index": "OSTI_mva",
-            "name": "OSTI",
-            "title": "Search Talk Videos from the OSTI",
-            "description": "Search through the sound tracks of about 200 recordings from the Office of Science and Technology Information. Click on search-result text snippets to navigate directly to keyword matches in the video.",
+            "recommendation": [
+                {
+                    "title": "NFL on FOX preview: Buccaneers/Lions",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/fe87d0dd-6122-4677-a274-0dfb92cb9bfa.job.aib.thumb.jpg",
+                    "duration": "00:01:05",
+                    "url": "http://fsvideoprod.edgesuite.net/video/Fox_Sports_Production/364/339/3_f_131123_tb_det_preview_web_400.mp4"
+                },
+                {
+                    "title": "Startups in NYC",
+                    "image": "http://www.msravs.com/mediastore/MSNVideo/thumb/f4e83a7a-5f74-405e-a7ed-0252430438e3.job.aib.thumb.jpg",
+                    "duration": "00:03:35",
+                    "url": "http://content4.catalog.video.msn.com/e2/ds/8b856eec-ec28-4280-afb5-d44475f52209.mp4"
+                }
+            ],
             "power": [
                 { "name": "MAVIS", "Link": "http://research.microsoft.com/en-us/projects/mavis/" },
                 { "name": "Microsoft Research",  "Link": "http://research.microsoft.com/" }

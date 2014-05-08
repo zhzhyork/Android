@@ -12,15 +12,15 @@ public class Channel {
 	
 	private String mDescription;
 	
-	private ArrayList<String> mQuery;
+	private ArrayList<Video> mRecommendations;
 	
-	private ArrayList<Power> mPower;
+	private ArrayList<Power> mPowers;
 	
 	private String mUpdate;
 	
 	public Channel() {
-		mQuery = new ArrayList<String>();
-		mPower = new ArrayList<Power>();
+		mRecommendations = new ArrayList<Video>();
+		mPowers = new ArrayList<Power>();
 	}
 	
 	public void setIndex(String index) { 
@@ -63,23 +63,28 @@ public class Channel {
 		return mUpdate; 
 	}
 	
-	public void addQuery(String query) {
-		mQuery.add(query);
+	public void addRecommendation(String title, String image, String duration, String url) {
+		Video video = new Video();
+		video.title = title;
+		video.image = image;
+		video.duration = duration;
+		video.url = url;
+		mRecommendations.add(video);
 	}
 	
-	public ArrayList<String> getQuery() { 
-		return mQuery;
+	public ArrayList<Video> getRecommendations() { 
+		return mRecommendations;
 	}
 	
 	public void addPower(String name, String link) {
 		Power power = new Power();
 		power.name = name;
 		power.link = link;
-		mPower.add(power);
+		mPowers.add(power);
 	}
 	
-	public ArrayList<Power> getPower() { 
-		return mPower; 
+	public ArrayList<Power> getPowers() { 
+		return mPowers; 
 	}
 	
 	public class Power {
@@ -87,5 +92,16 @@ public class Channel {
 		public String name;
 		
 	    public String link;
+	}
+	
+	public class Video {
+		
+		public String title;
+		
+		public String image;
+		
+		public String duration;
+		
+		public String url;
 	}
 }

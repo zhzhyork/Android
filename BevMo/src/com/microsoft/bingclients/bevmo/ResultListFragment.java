@@ -51,6 +51,11 @@ public class ResultListFragment extends Fragment {
         if (mVideos != null) {
         	mResultListView = (ExpandableListView) rootView.findViewById(R.id.list);
             mResultListView.setAdapter(new ResultAdapter(getActivity(), mVideos.getItems()));
+            
+            if (mVideos.getItems() != null && mVideos.getItems().size() > 0) {
+            	TextView tv = (TextView) rootView.findViewById(R.id.empty);
+            	tv.setVisibility(View.INVISIBLE);
+            }
         }
         
         return rootView;
