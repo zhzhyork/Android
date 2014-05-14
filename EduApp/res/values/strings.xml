@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">EduApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_logout">Sign out</string>
+    <string name="auth_username_hint">Username</string>
+    <string name="auth_password_hint">Password</string>
+    <string name="auth_button_text">Sign in</string>
+    
+    <string name="list_no_data">You have not registered any course.</string>
+    <string name="video_no_data">No video found.</string>
+    
+</resources>
