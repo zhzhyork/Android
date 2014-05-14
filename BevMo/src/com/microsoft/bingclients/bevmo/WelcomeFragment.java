@@ -177,7 +177,7 @@ public class WelcomeFragment extends Fragment {
             	duration.setText(mList.get(position).duration);
             	title.setText(mList.get(position).title);
             	
-            	image.setOnClickListener(new PlayVideoListener(mList.get(position).url));
+            	convertView.setOnClickListener(new PlayVideoListener(mList.get(position).url));
             }
 
             return convertView;
