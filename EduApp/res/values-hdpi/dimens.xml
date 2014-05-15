@@ -24,5 +24,13 @@
     <dimen name="list_image_text_size">14sp</dimen>
     <dimen name="list_title_text_size">16sp</dimen>
     <dimen name="list_description_text_size">16sp</dimen>
+    
+    <dimen name="video_container_height">160dp</dimen>
+    <dimen name="video_gallery_height">92dp</dimen>
+    <dimen name="video_pointer_height">68dp</dimen>
+    <dimen name="video_pointer_margin">60dp</dimen>
+    <dimen name="video_gallery_margin_bottom">20dp</dimen>
+    <dimen name="video_block_width">95dp</dimen>
+    <dimen name="video_comment_width">90dp</dimen>
 
 </resources>

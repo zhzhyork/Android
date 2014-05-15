@@ -11,4 +11,6 @@
     <string name="list_no_data">You have not registered any course.</string>
     <string name="video_no_data">No video found.</string>
     
+    <string name="comment_button">Comment</string>
+    
 </resources>

@@ -4,10 +4,44 @@
     android:layout_height="match_parent" 
     android:background="@android:color/black" > 
     
+    <Button
+        android:id="@+id/add" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" 
+        android:layout_marginLeft="10dp" 
+        android:text="@string/comment_button"/>
+    
     <VideoView 
         android:id="@+id/video" 
         android:layout_width="match_parent" 
         android:layout_height="match_parent"
         android:layout_gravity="center" /> 
-
+    
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/video_container_height"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/video_gallery_margin_bottom"
+        android:orientation="vertical"
+        android:visibility="invisible" >
+        
+        <com.microsoft.bingclients.eduapp.views.CustomScrollView
+            android:id="@+id/scrollView"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/video_gallery_height"
+	        android:fillViewport="true"
+	        android:measureAllChildren="false"
+	        android:scrollbars="none" >
+	        
+	        <LinearLayout
+	            android:id="@+id/gallery"
+	            android:layout_width="wrap_content"
+	            android:layout_height="@dimen/video_gallery_height"
+	            android:orientation="horizontal" >
+	        </LinearLayout>
+	        
+	    </com.microsoft.bingclients.eduapp.views.CustomScrollView>
+    </LinearLayout>
 </FrameLayout>

@@ -3,5 +3,6 @@
     
     <color name="auth_button_background_color">#36b</color>
     <color name="list_child_background_color">#ccc</color>
+    <color name="comments_background_color">#80FFFFFF</color>
     
 </resources>

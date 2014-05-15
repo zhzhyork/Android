@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/video_comment_width"
+    android:layout_height="match_parent"
+    android:paddingRight="5dp"
+    android:orientation="vertical" >
+    
+    <ListView 
+        android:id="@+id/comments"
+        android:layout_width="@dimen/video_comment_width"
+        android:layout_height="wrap_content"
+        android:background="@color/comments_background_color"
+        android:groupIndicator="@null" />
+    
+
+</LinearLayout>

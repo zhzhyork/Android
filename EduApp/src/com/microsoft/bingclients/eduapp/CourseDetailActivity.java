@@ -39,12 +39,12 @@ public class CourseDetailActivity extends ActionBarActivity {
 			list.add("Pointers");
 			list.add("Algorithms");
 			list.add("Memory Addresses");
-			list.add("Large Amounts of Data");
+			list.add("Binary Files");
 		} else if ("CSE341".equals(title)) {
 			list.add("Pattern Matching");
-			list.add("Mutual Recursion");
+			list.add("Decomposition");
 			list.add("Delaying Evaluation");
-			list.add("Object-Oriented Programming");
+			list.add("Dynamic Typing");
 		}
 		
 		if (list != null) {
@@ -55,7 +55,6 @@ public class CourseDetailActivity extends ActionBarActivity {
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
