@@ -164,8 +164,9 @@ int dimen list_image_text_size 0x7f080022
 int dimen list_image_width 0x7f080020
 int dimen list_title_text_size 0x7f080023
 int dimen navigation_drawer_width 0x7f080017
-int dimen video_block_width 0x7f08002a
-int dimen video_comment_width 0x7f08002b
+int dimen video_block_width 0x7f08002b
+int dimen video_button_margin_bottom 0x7f08002a
+int dimen video_comment_width 0x7f08002c
 int dimen video_container_height 0x7f080025
 int dimen video_gallery_height 0x7f080026
 int dimen video_gallery_margin_bottom 0x7f080029
@@ -273,7 +274,7 @@ int id action_menu_divider 0x7f050016
 int id action_menu_presenter 0x7f050017
 int id action_mode_close_button 0x7f050024
 int id activity_chooser_view_content 0x7f050025
-int id add 0x7f05004b
+int id add 0x7f05004c
 int id always 0x7f05000b
 int id avatar 0x7f050040
 int id beginning 0x7f050011
@@ -337,7 +338,7 @@ int id top_action_bar 0x7f050020
 int id up 0x7f050021
 int id useLogo 0x7f050003
 int id username 0x7f050041
-int id video 0x7f05004c
+int id video 0x7f05004b
 int id videoList 0x7f05003e
 int id withText 0x7f05000c
 int integer abc_max_action_buttons 0x7f090000

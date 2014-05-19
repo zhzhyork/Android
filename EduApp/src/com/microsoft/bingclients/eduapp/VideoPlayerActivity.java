@@ -3,8 +3,11 @@ package com.microsoft.bingclients.eduapp;
 import java.util.ArrayList;
 
 import com.microsoft.bingclients.eduapp.models.Constant;
+import com.microsoft.bingclients.eduapp.views.CustomMediaController;
 import com.microsoft.bingclients.eduapp.views.CustomScrollView;
 import com.microsoft.bingclients.eduapp.views.CustomScrollView.ScrollViewListener;
+import com.microsoft.bingclients.eduapp.views.CustomVideoView;
+import com.microsoft.bingclients.eduapp.views.VideoPointerPanel;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -13,15 +16,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
+import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.LayoutInflater;
@@ -30,11 +31,10 @@ import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.MediaController;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 public class VideoPlayerActivity extends Activity {
 	
@@ -42,13 +42,13 @@ public class VideoPlayerActivity extends Activity {
 	
 	private ProgressDialog mProgressDialog;
 	
-	private VideoView mVideoView;
+	private CustomVideoView mVideoView;
 	
-	private MediaController mMediaController;
+	private CustomMediaController mMediaController;
 	
 	private LinearLayout mContainer;
 	
-	private PointerPanel mPointerPanel;
+	private VideoPointerPanel mPointerPanel;
 
 	@Override 
 	public void onCreate(Bundle savedInstanceState) { 
@@ -74,7 +74,7 @@ public class VideoPlayerActivity extends Activity {
 		String url = intent.getStringExtra(Constant.BUNDLE_STRING_URL);
         final float time = intent.getFloatExtra(Constant.BUNDLE_FLOAT_TIME, 0);
         
-        mVideoView = (VideoView) findViewById(R.id.video);
+        mVideoView = (CustomVideoView) findViewById(R.id.video);
         
         mVideoView.setOnPreparedListener(new OnPreparedListener() {
 
@@ -86,7 +86,7 @@ public class VideoPlayerActivity extends Activity {
             	
             	/********************* For test use ******************/
             	float[] offset = {1000, 2000, 3000, 4000, 5000};
-                mPointerPanel = new PointerPanel(mContext, offset, player.getDuration());
+                mPointerPanel = new VideoPointerPanel(mContext, offset, player.getDuration());
                 mContainer.addView(mPointerPanel);
                 
                 mMediaController.show();
@@ -118,18 +118,30 @@ public class VideoPlayerActivity extends Activity {
         
         setupComments();
         
-        mMediaController = new VideoController(this, true); 
+        mMediaController = new CustomMediaController(this, mContainer);
         mMediaController.setAnchorView(mVideoView);
         mMediaController.setMediaPlayer(mVideoView);
-        
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
 		
         mVideoView.setMediaController(mMediaController);
-        mVideoView.setMinimumWidth(dm.widthPixels);
-        mVideoView.setMinimumHeight(dm.heightPixels);
         mVideoView.setKeepScreenOn(true);
         mVideoView.setVideoPath(url);
+	}
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		
+		if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mVideoView.getLayoutParams();
+			params.gravity = Gravity.CENTER;
+			mVideoView.setLayoutParams(params);
+			mMediaController.hide();
+		} else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+			FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mVideoView.getLayoutParams();
+			params.gravity = Gravity.NO_GRAVITY;
+			mVideoView.setLayoutParams(params);
+			mMediaController.show();
+		}
 	}
 	
 	private void setupComments() {
@@ -281,76 +293,4 @@ public class VideoPlayerActivity extends Activity {
 			return convertView;
 		}
 	}
-	
-	private class VideoController extends MediaController {
-
-		public VideoController(Context context, boolean useFastForward) {
-			super(context, useFastForward);
-			// TODO Auto-generated constructor stub
-		}
-		
-		@Override
-		public void show() {
-			super.show();
-			
-			mContainer.setVisibility(View.VISIBLE);
-		}
-		
-		@Override
-	    public void hide() {
-	        super.hide();
-	        
-	        mContainer.setVisibility(View.INVISIBLE);
-	    }
-	}
-	
-	private class PointerPanel extends View {
-		
-		private Context mContext;
-		
-		private Paint mPaint;
-		
-		private float[] mOffset;
-		
-		private int mDuration;
-		
-		private int mScroll;
-
-        public PointerPanel(Context context, float[] offset, int duration) {
-            super(context);
-            mContext = context;
-            mOffset = offset;
-            mDuration = duration;
-            
-            mPaint = new Paint();
-            mPaint.setColor(Color.WHITE);
-        }
-        
-        public void setScroll(int scroll) {
-        	mScroll = scroll;
-        }
-        
-        public void addOffset(float offset) {
-        	float[] newOffset = new float[mOffset.length + 1];
-        	for (int i = 0; i < mOffset.length; i ++) {
-        		newOffset[i] = mOffset[i];
-        	}
-        	
-        	newOffset[mOffset.length] = offset;
-        	mOffset = newOffset;
-        }
-        
-        @Override
-        public void onDraw(Canvas canvas) {
-        	float width = ((View) getParent()).getWidth();
-        	float margin = mContext.getResources().getDimension(R.dimen.video_pointer_margin);
-        	float height = mContext.getResources().getDimension(R.dimen.video_pointer_height);
-        	float blockWidth = mContext.getResources().getDimension(R.dimen.video_block_width);
-        	
-        	for (int i = 0; i < mOffset.length; i ++) {
-        		canvas.drawLine(blockWidth * (i + (float) 0.5) - mScroll, (float) 0.0, 
-        				margin + mOffset[i] / mDuration * (width - 2 * margin), height, mPaint);
-        	}
-        }
-    }
 }

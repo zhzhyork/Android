@@ -4,20 +4,11 @@
     android:layout_height="match_parent" 
     android:background="@android:color/black" > 
     
-    <Button
-        android:id="@+id/add" 
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" 
-        android:layout_marginLeft="10dp" 
-        android:text="@string/comment_button"/>
-    
-    <VideoView 
+    <com.microsoft.bingclients.eduapp.views.CustomVideoView 
         android:id="@+id/video" 
         android:layout_width="match_parent" 
-        android:layout_height="match_parent"
-        android:layout_gravity="center" /> 
-    
+        android:layout_height="match_parent" /> 
+
     <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -26,6 +17,14 @@
         android:layout_marginBottom="@dimen/video_gallery_margin_bottom"
         android:orientation="vertical"
         android:visibility="invisible" >
+        
+        <Button
+        android:id="@+id/add" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="@dimen/video_button_margin_bottom"
+        android:text="@string/comment_button"/>
         
         <com.microsoft.bingclients.eduapp.views.CustomScrollView
             android:id="@+id/scrollView"
