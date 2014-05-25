@@ -52,7 +52,7 @@ public class MainActivity extends ActionBarActivity {
     
     public void signIn(String username, String password) {
     	getSupportFragmentManager().beginTransaction()
-        		.replace(R.id.container, CourseListFragment.newInstance())
+        		.replace(R.id.container, CourseTableFragment.newInstance())
         		.commit();
     }
     

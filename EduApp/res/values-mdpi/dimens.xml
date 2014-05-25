@@ -10,10 +10,32 @@
     -->
     <dimen name="navigation_drawer_width">240dp</dimen>
     
+    <dimen name="auth_image_width">150dp</dimen>
+    <dimen name="auth_image_height">120dp</dimen>
+    <dimen name="auth_username_width">300dp</dimen>
+    <dimen name="auth_username_margin_top">20dp</dimen>
+    <dimen name="auth_password_width">300dp</dimen>
+    <dimen name="auth_password_margin_top">20dp</dimen>
+    <dimen name="auth_button_width">180dp</dimen>
+    <dimen name="auth_button_margin_top">35dp</dimen>
+    
     <dimen name="list_image_width">233dp</dimen>
     <dimen name="list_image_height">150dp</dimen>
     <dimen name="list_image_text_size">20sp</dimen>
     <dimen name="list_title_text_size">20sp</dimen>
     <dimen name="list_description_text_size">20sp</dimen>
+    
+    <dimen name="video_container_height">300dp</dimen>
+    <dimen name="video_gallery_height">164dp</dimen>
+    <dimen name="video_pointer_height">68dp</dimen>
+    <dimen name="video_pointer_margin">60dp</dimen>
+    <dimen name="video_gallery_margin_bottom">20dp</dimen>
+    <dimen name="video_button_margin_bottom">20dp</dimen>
+    <dimen name="video_block_width">155dp</dimen>
+    <dimen name="video_comment_width">150dp</dimen>
+    
+    <dimen name="table_column_width">40dp</dimen>
+    <dimen name="table_column_height_offset">17dp</dimen>
+    <dimen name="table_key_width">110dp</dimen>
 
 </resources>

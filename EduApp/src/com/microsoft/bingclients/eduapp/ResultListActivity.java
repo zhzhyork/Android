@@ -5,15 +5,21 @@ import java.util.ArrayList;
 import com.microsoft.bingclients.eduapp.R;
 import com.microsoft.bingclients.eduapp.VideoPlayerActivity;
 import com.microsoft.bingclients.eduapp.models.SearchItem;
+import com.microsoft.bingclients.eduapp.models.SearchQuery;
 import com.microsoft.bingclients.eduapp.models.SearchSnippet;
 import com.microsoft.bingclients.eduapp.utils.ImageDownloader;
+import com.microsoft.bingclients.eduapp.utils.RssReader;
 import com.microsoft.bingclients.eduapp.models.Constant;
 import com.microsoft.bingclients.eduapp.models.SearchResults;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
@@ -28,7 +35,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class ResultListActivity extends ActionBarActivity {
+public class ResultListActivity extends ActionBarActivity implements OnQueryTextListener{
+	
+	private SearchView mSearchView;
+	
+	private ResultAdapter mResultAdapter;
 
 	@Override 
 	public void onCreate(Bundle savedInstanceState) { 
@@ -39,8 +50,10 @@ public class ResultListActivity extends ActionBarActivity {
 				.getParcelable(Constant.BUNDLE_STRING_VIDEO);
 		
 		if (videos != null) {
+			mResultAdapter = new ResultAdapter(this, videos.getItems());
+			
 			ExpandableListView resultListView = (ExpandableListView) findViewById(R.id.videoList);
-			resultListView.setAdapter(new ResultAdapter(this, videos.getItems()));
+			resultListView.setAdapter(mResultAdapter);
             
             if (videos.getItems() != null && videos.getItems().size() > 0) {
             	TextView tv = (TextView) findViewById(R.id.empty);
@@ -52,8 +65,12 @@ public class ResultListActivity extends ActionBarActivity {
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        getMenuInflater().inflate(R.menu.result, menu);
+        
+        mSearchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        mSearchView.setOnQueryTextListener(this);
+        
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -71,6 +88,72 @@ public class ResultListActivity extends ActionBarActivity {
         
         return super.onOptionsItemSelected(item);
     }
+
+	@Override
+	public boolean onQueryTextChange(String text) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onQueryTextSubmit(String text) {
+		// TODO Auto-generated method stub
+		mSearchView.setIconified(true);
+		mSearchView.clearFocus();
+		
+		InputMethodManager imm = (InputMethodManager) getSystemService(
+			      Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(mSearchView.getWindowToken(), 0);
+        
+		search(text);
+		
+		return false;
+	}
+	
+	public void updateResult(SearchResults videos) {
+		mResultAdapter.setList(videos.getItems());
+		mResultAdapter.notifyDataSetChanged();
+	}
+	
+	public void search(String key) {
+    	new SearchTask(this).execute(key); 
+    }
+    
+    private class SearchTask extends AsyncTask<String, Void, SearchResults> {
+    	
+    	private ProgressDialog mProgressDialog;
+    	
+    	private ResultListActivity mActivity;
+    	
+    	public SearchTask(Context context) {
+    		mActivity = (ResultListActivity) context;
+    		mProgressDialog = new ProgressDialog(context);
+        }
+
+    	@Override
+    	protected void onPreExecute() {
+    		mProgressDialog.setMessage("Searching...");
+    		mProgressDialog.show();
+
+    	}
+
+    	@Override
+    	protected SearchResults doInBackground(String... key) {
+    		SearchQuery query = new SearchQuery();
+    		query.setText(key[0]);
+    		
+    		return RssReader.read(query);
+    	}
+    	
+    	@Override
+    	protected void onPostExecute(SearchResults videos) {
+    		if (mProgressDialog.isShowing()) {
+    			mProgressDialog.dismiss();
+            }
+    		
+    		mActivity.updateResult(videos);
+    	}
+    }
     
     private class ResultAdapter extends BaseExpandableListAdapter {
     	
@@ -87,6 +170,10 @@ public class ResultListActivity extends ActionBarActivity {
             mInflater = LayoutInflater.from(context);
             mList = list;
             mImageDownloader = new ImageDownloader();
+        }
+        
+        public void setList(ArrayList<SearchItem> list) {
+        	mList = list;
         }
 
 		@Override

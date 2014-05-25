@@ -13,11 +13,25 @@
         android:scaleType="centerCrop"
         android:src="@drawable/silhouette" />
     
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+        
+    </LinearLayout>
+    
     <EditText
         android:id="@+id/username"
         android:layout_width="@dimen/auth_username_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/auth_username_margin_top"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
         android:hint="@string/auth_username_hint" />
     
     <EditText
@@ -25,6 +39,8 @@
         android:layout_width="@dimen/auth_password_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/auth_password_margin_top"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
         android:inputType="textPassword"
         android:hint="@string/auth_password_hint" />
     

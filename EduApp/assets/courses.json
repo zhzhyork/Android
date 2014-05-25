@@ -1,0 +1,34 @@
+{
+    "courses": [
+        {
+            "Name": "CS101",
+            "Title": "Fundamentals of Computer Programming",
+            "Class": ["1-1", "4-4"],
+            "Instructor": "Massoud Ghyam",
+            "Lab TA": "Jenny Chang & Kale Harbick",
+            "Syllabus Online": "http://www-scf.usc.edu/~csci101/docs/syllabus.pdf",
+            "Course Objective": "Provide hands-on programming experience in C.",
+            "Prerequisites": "Computer Literacy",
+            "Class Policy": "Academic dishonesty includes (but not limited to) the following:\n\n1. Giving or receiving information during an exam.\n2. Unauthorized or malicious use of computing facilities.\n3. Deception or misrepresentation in a student's dealing with the instructor, teaching assistant, or grader.\n4. Inappropriate collaboration on or coping of homework assignments. Students are encouraged to discuss the readings with one another, even when the discussion relates to assignments. As log as the purpose of discussion is to help the student's understanding of the material, and not to reduce or share the work, such discussion will not be deemed inappropriate.\n5. Plagiarism, the submission of material authored by another person but represented as the students own work. It does not matter whether the original work author gave permission.\n6. Any violation of academic integrity standards described in the student conduct code. Students are expected to be familiar with these standards.\n\nThe instructor, teaching assistant, and grader will make every attempt to detect cases of academic dishonesty.",
+            "Book": "Required Text: Computer Science: A Structured Programming Approach Using C\nAuthor: Behrouz A. Forouzan / Richard F. Gilberg\nPublisher: Brooks / Cole Thomas Learning",
+            "Course Contents": "Intro to Computers, Algorithms & UNIX Systems\nI/O Commands : printf, scanf\nFunctions\nIf & Switch Statements\nDebugging Techniques & Software\nTest 1=> Section 1: Sep. 28 Section 2: Sep. 29 Section 3: Sep. 28 **\nLoops\nDesign for Large Amounts of Data\n1D & Multidimensional Arrays\nTest 2=> Section 1:Oct. 26 Section 2: Oct. 27 Section 3: Oct. 26 **\nPointers & Memory Addresses\nArrays & Strings\nStructures\nTest 3=> Section 1: Nov. 21 Section 2: Nov. 22 Section 3: Nov 21 **\nBinary Files\n\n** The lab exercises/quizzes will cover materials from lectures covered in the current or previous weeks.",
+            "Examination": "Midterms: Week 6, 9, 13\n\nFinal:\nSection 1 ( 2:00-03:15 MW) :  Friday, Dec. 9, 2:00-4:00 p.m.\nSection 2 ( 2:00 - 3:15 T Th) :  Monday, Dec. 12, 2:00-4:00 p.m.\nSection 3 ( 3:30-04:50 M W) :  Thursday, Dec. 8, 2:00-4:00 p.m.",
+            "Key Words": ["Pointers", "Algorithms", "Memory Addresses", "Binary Files"]
+        },
+        {
+            "Name": "CSE341",
+            "Title": "Programming Languages",
+            "Class": ["2-3", "5-2"],
+            "Instructor": "Dan Grossman",
+            "Lab TA": ["Amaris Chen, Patrick Larson & Josiah Adams"],
+            "Syllabus Online": "https://courses.cs.washington.edu/courses/cse341/13sp/syllabus.pdf",
+            "Course Objective": "Successful course participants will:\n1. Internalize an accurate understanding of what functional and object-oriented programs mean\n2. Develop the skills necessary to learn new programming languages quickly\n3. Master specific language concepts such that they can recognize them in strange guises\n4. Learn to evaluate the power and elegance of programming languages and their constructs\n5. Attain reasonable proficiency in the ML, Racket, and Ruby languages | and, as a by-product, become more proficient in languages they already know",
+            "Prerequisites": "Introduction to Programming",
+            "Class Policy": "Motivation:\nA course in which students do not accurately present what they know and what work they have done is worse than having no course at all.\nBottom Line: While we want you to learn from your fellow students and discuss the course material, the work you complete must be your own.\nCollaboration Policies: You are encouraged to discuss the material in this course, including homework problems. But you must produce your own homework solutions and you must not look at other students' solutions or other information that takes away the intellectual challenge of the homework.\nCheating: Cheating is a very serious offense. If you are caught cheating, you can expect a failing grade and initiation of a cheating case in the University system.\nOnline Solutions: Solutions to some of our homework problems might, unfortunately, be online. Of course, you should not look at such solutions. You are further encouraged to bring them to the attention of the course staff. In general, the course website should have the links you need to complete the assignments.",
+            "Book": "Elements of ML Programming, ML'97 Edition, Jeffrey D. Ullman, 1998.\nProgramming Ruby 1.9: The Pragmatic Programmers' Guide (Facets of Ruby), Dave Thomas et al, 2009.",
+            "Course Contents": "Unit 1: ML Functions, Tuples, Lists, and More\nUnit 2: Datatypes, Pattern Matching, Tail Recursion, and More\nUnit 3: First-Class Functions and Closures\nUnit 4: ML Modules, Type Inference, Equivalence, & More\nCourse-Motivation Interlude, May 1\nUnit 5: Racket, Delaying Evaluation, Memoization, Macros\nUnit 6: Structs, Implementing Languages, Static vs. Dynamic Typing\nUnit 7: Ruby, Object-Oriented Programming, Subclassing\nUnit 8: Program Decomposition, Mixins, Subtyping, and More\nL26. June 7: Course Victory Lap",
+            "Examination": "Midterm: Friday May 3, in class\nFinal: Thursday June 13, 8:30-10:20",
+            "Key Words": ["Pattern Matching", "Decomposition", "Delaying Evaluation", "Dynamic Typing"]
+        }
+    ]
+}

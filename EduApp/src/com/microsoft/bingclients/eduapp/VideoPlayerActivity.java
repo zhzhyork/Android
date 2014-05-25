@@ -148,11 +148,11 @@ public class VideoPlayerActivity extends Activity {
 		/********************* For test use ******************/
 		ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
 		ArrayList<String> l1 = new ArrayList<String>();
-		l1.add("hey00");
-		l1.add("hey01");
-		l1.add("hey02");
-		l1.add("hey03");
-		l1.add("hey04");
+		l1.add("I like this part");
+		l1.add("It's great");
+		l1.add("Like it. Like it. Like it. Like it.");
+		l1.add("hahahahaha");
+		l1.add("I like this part, too");
 		l1.add("hey05");
 		list.add(l1);
 		ArrayList<String> l2 = new ArrayList<String>();

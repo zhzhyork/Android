@@ -12,5 +12,4 @@
         android:background="@color/comments_background_color"
         android:groupIndicator="@null" />
     
-
 </LinearLayout>

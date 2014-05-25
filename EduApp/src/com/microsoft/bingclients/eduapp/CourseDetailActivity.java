@@ -2,8 +2,10 @@ package com.microsoft.bingclients.eduapp;
 
 import java.util.ArrayList;
 
+import com.microsoft.bingclients.eduapp.models.Course;
 import com.microsoft.bingclients.eduapp.models.SearchQuery;
 import com.microsoft.bingclients.eduapp.models.SearchResults;
+import com.microsoft.bingclients.eduapp.utils.JsonParser;
 import com.microsoft.bingclients.eduapp.utils.RssReader;
 import com.microsoft.bingclients.eduapp.models.Constant;
 
@@ -20,6 +22,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -33,23 +37,14 @@ public class CourseDetailActivity extends ActionBarActivity {
 		Intent intent = getIntent();
 		String title = intent.getStringExtra(Constant.BUNDLE_STRING_TITLE);
 		
-		/********************* For test use ******************/
-		ArrayList<String> list = new ArrayList<String>();
-		if ("CS101".equals(title)) {
-			list.add("Pointers");
-			list.add("Algorithms");
-			list.add("Memory Addresses");
-			list.add("Binary Files");
-		} else if ("CSE341".equals(title)) {
-			list.add("Pattern Matching");
-			list.add("Decomposition");
-			list.add("Delaying Evaluation");
-			list.add("Dynamic Typing");
-		}
+		ArrayList<Course> courses = JsonParser.parseCourses(getAssets());
 		
-		if (list != null) {
-			ListView listView = (ListView) findViewById(R.id.list);
-			listView.setAdapter(new CourseAdapter(this, list));
+		for (int i = 0; i < courses.size(); i ++) {
+			if (courses.get(i).getName().equals(title)) {
+				ListView listView = (ListView) findViewById(R.id.list);
+				listView.setAdapter(new CourseAdapter(this, courses.get(i)));
+				break;
+			}
 		}
 	}
 	
@@ -78,28 +73,39 @@ public class CourseDetailActivity extends ActionBarActivity {
 	
 	private class CourseAdapter extends BaseAdapter {
 		
-		private ArrayList<String> mList;
+		private Course mCourse;
 		
 		private CourseDetailActivity mActivity;
 
     	private LayoutInflater mInflater;
 
-		public CourseAdapter(CourseDetailActivity activity, ArrayList<String> list) {
+		public CourseAdapter(CourseDetailActivity activity, Course course) {
 			mActivity = activity;
             mInflater = LayoutInflater.from(activity);
-            mList = list;
+            mCourse = course;
         }
 		
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return mList.size();
+			return mCourse.getKeys().size() + 4;
 		}
 
 		@Override
 		public Object getItem(int position) {
 			// TODO Auto-generated method stub
-			return mList.get(position);
+			switch (position) {
+			case 0:
+				return mCourse.getName();
+			case 1:
+				return mCourse.getTitle();
+			case 2:
+				return mCourse.getClassList();
+			case 3:
+				return mCourse.getWords();
+			default:
+				return mCourse.getKeys().get(position - 4);
+			}
 		}
 
 		@Override
@@ -111,23 +117,72 @@ public class CourseDetailActivity extends ActionBarActivity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			// TODO Auto-generated method stub
-			convertView = mInflater.inflate(R.layout.list_item, null);
+			TextView key;
+			TextView value;
 			
-			TextView query = (TextView) convertView.findViewById(R.id.item);
-			
-			if (position < mList.size()) {
-				final String text = mList.get(position);
-				query.setText(text);
+			switch (position) {
+			case 0:
+				convertView = mInflater.inflate(R.layout.course_detail_item, null);
+				key = (TextView) convertView.findViewById(R.id.key);
+				value = (TextView) convertView.findViewById(R.id.value);
 				
-				convertView.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View view) {
-						// TODO Auto-generated method stub
-						mActivity.search(text);
-					}
+				key.setText("Name");
+				value.setText(mCourse.getName());
+				break;
+			case 1:
+				convertView = mInflater.inflate(R.layout.course_detail_item, null);
+				key = (TextView) convertView.findViewById(R.id.key);
+				value = (TextView) convertView.findViewById(R.id.value);
+				
+				key.setText("Title");
+				value.setText(mCourse.getTitle());
+				break;
+			case 2:
+				convertView = mInflater.inflate(R.layout.course_detail_item, null);
+				key = (TextView) convertView.findViewById(R.id.key);
+				value = (TextView) convertView.findViewById(R.id.value);
+				
+				key.setText("Class");
+				ArrayList<String> classes = mCourse.getClassList();
+				String className = classes.get(0);
+				for (int i = 1; i < classes.size(); i ++) {
+					className += ", " + classes.get(i);
+				}
+				value.setText(className);
+				break;
+			case 3:
+				convertView = mInflater.inflate(R.layout.course_keyword_item, null);
+				key = (TextView) convertView.findViewById(R.id.key);
+				LinearLayout words = (LinearLayout) convertView.findViewById(R.id.words);
+				
+				key.setText("Key Words");
+				for (int j = 0; j < mCourse.getWords().size(); j ++) {
+					View view = mInflater.inflate(R.layout.course_keyword_button, null);
+					Button button = (Button) view.findViewById(R.id.button);
+					final String word = mCourse.getWords().get(j);
+					button.setText(word);
 					
-				});
+					button.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View view) {
+							// TODO Auto-generated method stub
+							mActivity.search(word);
+						}
+						
+					});
+					
+					words.addView(view);
+				}
+				break;
+			default:
+				convertView = mInflater.inflate(R.layout.course_detail_item, null);
+				key = (TextView) convertView.findViewById(R.id.key);
+				value = (TextView) convertView.findViewById(R.id.value);
+				
+				key.setText(mCourse.getKeys().get(position - 4));
+				value.setText(mCourse.getValues().get(position - 4));
+				break;
 			}
 			
 			return convertView;
