@@ -28,6 +28,7 @@ import android.view.View.OnClickListener;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,7 +50,7 @@ public class VideoPlayerActivity extends Activity {
 	private LinearLayout mContainer;
 	
 	private VideoPointerPanel mPointerPanel;
-
+	
 	@Override 
 	public void onCreate(Bundle savedInstanceState) { 
 		super.onCreate(savedInstanceState); 
@@ -60,7 +61,7 @@ public class VideoPlayerActivity extends Activity {
 		mProgressDialog = ProgressDialog.show(this, "", "Loading video...", true);
 		
 		Intent intent = getIntent();
-		String id = intent.getStringExtra(Constant.BUNDLE_STRING_ID);
+		// String id = intent.getStringExtra(Constant.BUNDLE_STRING_ID);
 		String url = intent.getStringExtra(Constant.BUNDLE_STRING_URL);
         final float time = intent.getFloatExtra(Constant.BUNDLE_FLOAT_TIME, 0);
 		
@@ -86,7 +87,11 @@ public class VideoPlayerActivity extends Activity {
             	player.start();
             	
             	/********************* For test use ******************/
-            	float[] offset = {1000, 2000, 3000, 4000, 5000};
+            	int duration = player.getDuration();
+            	float[] offset = {(float) (duration * 0.01),
+            					  (float) (duration * 0.1),
+            					  (float) (duration * 0.5),
+            					  (float) (duration * 0.85)};
                 mPointerPanel = new VideoPointerPanel(mContext, offset, player.getDuration());
                 mContainer.addView(mPointerPanel);
                 
@@ -149,45 +154,29 @@ public class VideoPlayerActivity extends Activity {
 		/********************* For test use ******************/
 		ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
 		ArrayList<String> l1 = new ArrayList<String>();
-		l1.add("I like this part");
-		l1.add("It's great");
-		l1.add("Like it. Like it. Like it. Like it.");
-		l1.add("hahahahaha");
-		l1.add("I like this part, too");
-		l1.add("hey05");
+		l1.add("User1:\n\nI like this part.\n\n5-2-2013");
+		l1.add("User2:\n\nIt's great.\n\n5-4-2013");
+		l1.add("User3:\n\nLike it. Like it. Like it. Like it.\n\n7-21-2013");
+		l1.add("User4:\n\nI like this part, too.\n\n1-10-2014");
 		list.add(l1);
 		ArrayList<String> l2 = new ArrayList<String>();
-		l2.add("hey10");
-		l2.add("hey11");
-		l2.add("hey12");
-		l2.add("hey13");
-		l2.add("hey14");
-		l2.add("hey15");
+		l2.add("User1:\n\nI don't like this part.\n\n5-5-2013");
+		l2.add("User2:\n\nMe neither.\n\n8-8-2013");
+		l2.add("User3:\n\nWhat is it about?\n\n2-11-2014");
+		l2.add("User4:\n\nI Skipped it.\n\n4-30-2014");
 		list.add(l2);
 		ArrayList<String> l3 = new ArrayList<String>();
-		l3.add("hey20");
-		l3.add("hey21");
-		l3.add("hey22");
-		l3.add("hey23");
-		l3.add("hey24");
-		l3.add("hey25");
+		l3.add("User1:\n\nProfessor recommandation.\n\n5-9-2013");
+		l3.add("User2:\n\nThis is really helpful!\n\n12-1-2013");
+		l3.add("User3:\n\nThanks for sharing.\n\n2-11-2014");
+		l3.add("User4:\n\n:)\n\n5-12-2014");
 		list.add(l3);
 		ArrayList<String> l4 = new ArrayList<String>();
-		l4.add("hey30");
-		l4.add("hey31");
-		l4.add("hey32");
-		l4.add("hey33");
-		l4.add("hey34");
-		l4.add("hey35");
+		l4.add("User1:\n\nNice!\n\n11-25-2013");
+		l4.add("User2:\n\nI am confused. Anyone else?\n\n1-3-2014");
+		l4.add("User3:\n\nMe too. Who has reference to this?\n\n3-19-2014");
+		l4.add("User4:\n\nhttp://something.com\n\n5-20-2014");
 		list.add(l4);
-		ArrayList<String> l5 = new ArrayList<String>();
-		l5.add("hey40");
-		l5.add("hey41");
-		l5.add("hey42");
-		l5.add("hey43");
-		l5.add("hey44");
-		l5.add("hey45");
-		list.add(l5);
         
 		mContainer = (LinearLayout) findViewById(R.id.container);
         final LinearLayout gallery = (LinearLayout) findViewById(R.id.gallery);
@@ -230,8 +219,13 @@ public class VideoPlayerActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface arg0, int arg1) {
 						// TODO Auto-generated method stub
+						InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+						imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
+						
 						ArrayList<String> list = new ArrayList<String>();
-						list.add(et.getText().toString());
+						String comment = et.getText().toString();
+						comment = "Your Id:\n\n" + comment + "\n\n5-25-2014";
+						list.add(comment);
 						
 						View view = LayoutInflater.from(mContext).inflate(R.layout.video_comment, null);
 			        	ListView listView = (ListView) view.findViewById(R.id.comments);
@@ -245,7 +239,17 @@ public class VideoPlayerActivity extends Activity {
 					
 				});
 				
-				builder.setNegativeButton("Cancel", null);
+				builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+						// TODO Auto-generated method stub
+						InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+						imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
+					}
+					
+				});
+				
 				builder.show();
 			}
         	
@@ -254,12 +258,12 @@ public class VideoPlayerActivity extends Activity {
 	
 	private class CommentAdapter extends BaseAdapter {
 		
-		private Context mContext;
-		
 		private ArrayList<String> mList;
+		
+		private LayoutInflater mInflater;
 
 		public CommentAdapter(Context context, ArrayList<String> list) {
-			mContext = context;
+			mInflater = LayoutInflater.from(context);
             mList = list;
         }
 		
@@ -284,11 +288,11 @@ public class VideoPlayerActivity extends Activity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			// TODO Auto-generated method stub
+			convertView = mInflater.inflate(R.layout.video_comment_item, null);
+			
 			if (position < mList.size()) {
-				TextView tv = new TextView(mContext);
+				TextView tv = (TextView) convertView.findViewById(R.id.text);
 				tv.setText(mList.get(position));
-				tv.setTextColor(mContext.getResources().getColor(android.R.color.black));
-				convertView = tv;
 			}
 			
 			return convertView;
