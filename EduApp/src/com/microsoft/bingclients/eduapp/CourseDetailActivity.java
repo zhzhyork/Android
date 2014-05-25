@@ -199,6 +199,8 @@ public class CourseDetailActivity extends ActionBarActivity {
     	
     	private Context mContext;
     	
+    	private String mKeyword;
+    	
     	public SearchTask(Context context) {
     		mContext = context;
     		mProgressDialog = new ProgressDialog(context);
@@ -215,6 +217,9 @@ public class CourseDetailActivity extends ActionBarActivity {
     	protected SearchResults doInBackground(String... key) {
     		SearchQuery query = new SearchQuery();
     		query.setText(key[0]);
+    		query.setStart(1);
+    		
+    		mKeyword = key[0];
     		
     		return RssReader.read(query);
     	}
@@ -227,6 +232,7 @@ public class CourseDetailActivity extends ActionBarActivity {
     		
     		Intent intent = new Intent();
     		intent.setClass(mContext, ResultListActivity.class);
+    		intent.putExtra(Constant.BUNDLE_STRING_KEYWORD, mKeyword);
     		intent.putExtra(Constant.BUNDLE_STRING_VIDEO, videos);
     		mContext.startActivity(intent);
     	}

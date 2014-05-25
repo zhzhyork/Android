@@ -20,7 +20,7 @@
             "Title": "Programming Languages",
             "Class": ["2-3", "5-2"],
             "Instructor": "Dan Grossman",
-            "Lab TA": ["Amaris Chen, Patrick Larson & Josiah Adams"],
+            "Lab TA": "Amaris Chen, Patrick Larson & Josiah Adams",
             "Syllabus Online": "https://courses.cs.washington.edu/courses/cse341/13sp/syllabus.pdf",
             "Course Objective": "Successful course participants will:\n1. Internalize an accurate understanding of what functional and object-oriented programs mean\n2. Develop the skills necessary to learn new programming languages quickly\n3. Master specific language concepts such that they can recognize them in strange guises\n4. Learn to evaluate the power and elegance of programming languages and their constructs\n5. Attain reasonable proficiency in the ML, Racket, and Ruby languages | and, as a by-product, become more proficient in languages they already know",
             "Prerequisites": "Introduction to Programming",

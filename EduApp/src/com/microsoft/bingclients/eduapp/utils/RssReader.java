@@ -16,7 +16,8 @@ import com.microsoft.bingclients.eduapp.models.SearchResults;
 public class RssReader {
 
 	public static SearchResults read(SearchQuery query) {
-		String source = String.format(Constant.MAVIS_URL, query.getText());
+		String range = query.getStart() + "-" + (query.getStart() + 9);
+		String source = String.format(Constant.MAVIS_URL, query.getText(), range);
 		InputStream in = getRssFeed(source);
 		return parse(in);
 	}

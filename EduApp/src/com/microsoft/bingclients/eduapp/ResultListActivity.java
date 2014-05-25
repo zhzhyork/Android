@@ -28,6 +28,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
@@ -39,26 +41,71 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
 	
 	private SearchView mSearchView;
 	
+	private ExpandableListView mResultListView;
+	
 	private ResultAdapter mResultAdapter;
+	
+	private View mFooterView;
+	
+	private boolean mIsLoading;
+	
+	private boolean mHasMore;
+	
+	private String mKeyword;
+	
+	private ArrayList<SearchItem> mSearchItems;
 
 	@Override 
 	public void onCreate(Bundle savedInstanceState) { 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_video_list);
 		
-		SearchResults videos = (SearchResults) getIntent().getExtras()
+		Intent intent = getIntent();
+		SearchResults videos = (SearchResults) intent.getExtras()
 				.getParcelable(Constant.BUNDLE_STRING_VIDEO);
+		mKeyword = intent.getStringExtra(Constant.BUNDLE_STRING_KEYWORD);
 		
 		if (videos != null) {
-			mResultAdapter = new ResultAdapter(this, videos.getItems());
+			mSearchItems = videos.getItems();
+			mHasMore = mSearchItems.size() == 10;
+			mResultAdapter = new ResultAdapter(this, mSearchItems);
 			
-			ExpandableListView resultListView = (ExpandableListView) findViewById(R.id.videoList);
-			resultListView.setAdapter(mResultAdapter);
+			mResultListView = (ExpandableListView) findViewById(R.id.videoList);
+			
+			mFooterView = getLayoutInflater().inflate(R.layout.list_footer, null);
+			mFooterView.setVisibility(View.GONE);
+	        mIsLoading = false;
+	        mResultListView.addFooterView(mFooterView, null, false);
+			
+			mResultListView.setAdapter(mResultAdapter);
             
             if (videos.getItems() != null && videos.getItems().size() > 0) {
             	TextView tv = (TextView) findViewById(R.id.empty);
             	tv.setVisibility(View.INVISIBLE);
             }
+            
+            mResultListView.setOnScrollListener(new OnScrollListener() {
+            	
+                @Override
+                public void onScrollStateChanged(AbsListView view, 
+                        int scrollState) {
+                }
+
+                @Override
+                public void onScroll(AbsListView view, int firstVisibleItem, 
+                        int visibleItemCount, int totalItemCount) {
+                	if (mIsLoading || !mHasMore) {
+                        return;
+                    }
+
+                    if (firstVisibleItem + visibleItemCount == totalItemCount) {
+                    	mFooterView.setVisibility(View.VISIBLE);
+                        mIsLoading = true;
+                        search(mKeyword, mResultListView.getCount() + 1, false);
+                    }
+                }
+
+            });
         }
 	}
 	
@@ -105,18 +152,32 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
 			      Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(mSearchView.getWindowToken(), 0);
         
-		search(text);
+		mKeyword = text;
+		search(text, 1, true);
 		
 		return false;
 	}
 	
-	public void updateResult(SearchResults videos) {
-		mResultAdapter.setList(videos.getItems());
+	public void updateResult(SearchResults videos, boolean isNew) {
+		mFooterView.setVisibility(View.GONE);
+        mIsLoading = false;
+        
+        mHasMore = videos.getItems().size() == 10;
+        
+		if (isNew) {
+			mSearchItems = videos.getItems();
+			mResultListView.setSelection(0);
+		} else {
+			mSearchItems.addAll(videos.getItems());
+		}
+		
+		mResultAdapter.setList(mSearchItems);
 		mResultAdapter.notifyDataSetChanged();
 	}
 	
-	public void search(String key) {
-    	new SearchTask(this).execute(key); 
+	public void search(String key, int start, boolean isNew) {
+		String[] keys = {key, String.valueOf(start), String.valueOf(isNew)};
+    	new SearchTask(this, isNew).execute(keys); 
     }
     
     private class SearchTask extends AsyncTask<String, Void, SearchResults> {
@@ -125,33 +186,41 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
     	
     	private ResultListActivity mActivity;
     	
-    	public SearchTask(Context context) {
+    	private boolean mIsNew;
+    	
+    	public SearchTask(Context context, boolean isNew) {
+    		mIsNew = isNew;
     		mActivity = (ResultListActivity) context;
-    		mProgressDialog = new ProgressDialog(context);
+    		
+    		if (isNew) {
+    			mProgressDialog = new ProgressDialog(context);
+    		}
         }
 
     	@Override
     	protected void onPreExecute() {
-    		mProgressDialog.setMessage("Searching...");
-    		mProgressDialog.show();
-
+    		if (mProgressDialog != null) {
+    			mProgressDialog.setMessage("Searching...");
+        		mProgressDialog.show();
+    		}
     	}
 
     	@Override
     	protected SearchResults doInBackground(String... key) {
     		SearchQuery query = new SearchQuery();
     		query.setText(key[0]);
+    		query.setStart(Integer.parseInt(key[1]));
     		
     		return RssReader.read(query);
     	}
     	
     	@Override
     	protected void onPostExecute(SearchResults videos) {
-    		if (mProgressDialog.isShowing()) {
+    		if (mProgressDialog != null && mProgressDialog.isShowing()) {
     			mProgressDialog.dismiss();
             }
     		
-    		mActivity.updateResult(videos);
+    		mActivity.updateResult(videos, mIsNew);
     	}
     }
     
@@ -240,7 +309,8 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
             	duration.setText(mList.get(groupPosition).getDuration());
             	title.setText(mList.get(groupPosition).getTitle());
             	
-            	image.setOnClickListener(new PlayButtonListener(mContext, mList.get(groupPosition).getUrl(), 0));
+            	image.setOnClickListener(new PlayButtonListener(mContext, mList.get(groupPosition).getId(), 
+            			mList.get(groupPosition).getUrl(), 0));
             	
             	for (int i = 0; i < mList.get(groupPosition).getSnippets().size(); i ++) {
             		SearchSnippet snippet = mList.get(groupPosition).getSnippets().get(i);
@@ -255,7 +325,8 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
                     play.setText("Play from: " + String.format("%02d:%02d:%02d", intTime/3600, (intTime%3600)/60, (intTime%60)));
                     play.setFocusable(false);
                     
-                    play.setOnClickListener(new PlayButtonListener(mContext, mList.get(groupPosition).getUrl(), floatTime));
+                    play.setOnClickListener(new PlayButtonListener(mContext, mList.get(groupPosition).getId(), 
+                    		mList.get(groupPosition).getUrl(), floatTime));
                     
                     group.addView(snippetView);
             	}
@@ -279,14 +350,17 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
     
     private class PlayButtonListener implements OnClickListener {
 
+    	private String mId;
+    	
     	private String mUrl;
     	
     	private float mTime;
     	
     	private Context mContext;
     	
-    	public PlayButtonListener(Context context, String url, float time) {
+    	public PlayButtonListener(Context context, String id, String url, float time) {
     		mContext = context;
+    		mId = id;
     		mUrl = url;
     		mTime = time;
     	}
@@ -296,6 +370,7 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
 			// TODO Auto-generated method stub
 			Intent intent = new Intent();
 			intent.setClass(mContext, VideoPlayerActivity.class);
+			intent.putExtra(Constant.BUNDLE_STRING_ID, mId);
 			intent.putExtra(Constant.BUNDLE_STRING_URL, mUrl);
 			intent.putExtra(Constant.BUNDLE_FLOAT_TIME, mTime);
 			mContext.startActivity(intent);

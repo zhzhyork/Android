@@ -6,6 +6,8 @@ public class SearchQuery {
 	
 	private String mIndex;
 	
+	private int mStart;
+	
 	public SearchQuery() {
 	}
 	
@@ -24,5 +26,13 @@ public class SearchQuery {
 	
 	public String getIndex() { 
 		return mIndex; 
+	}
+	
+	public void setStart(int start) { 
+		mStart = start; 
+	}
+	
+	public int getStart() { 
+		return mStart; 
 	}
 }

@@ -85,7 +85,12 @@ public class SearchItem implements Parcelable {
 		return mDescription; 
 	}
 	
-	public void setImage(String image) { 
+	public void setImage(String image) {
+		image = image.replace("./", Constant.MAVIS_URL_ROOT);
+		
+		/***** for test use *****/
+		image = image.replace("/mmms/", "/mmms.redmond.corp.microsoft.com/");
+		
 		mImage = image; 
 	}
 	

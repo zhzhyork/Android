@@ -58,6 +58,12 @@ public class VideoPlayerActivity extends Activity {
 		mContext = this;
 		
 		mProgressDialog = ProgressDialog.show(this, "", "Loading video...", true);
+		
+		Intent intent = getIntent();
+		String id = intent.getStringExtra(Constant.BUNDLE_STRING_ID);
+		String url = intent.getStringExtra(Constant.BUNDLE_STRING_URL);
+        final float time = intent.getFloatExtra(Constant.BUNDLE_FLOAT_TIME, 0);
+		
 		mProgressDialog.setOnCancelListener(new OnCancelListener() {
 
 			@Override
@@ -69,12 +75,7 @@ public class VideoPlayerActivity extends Activity {
 			
 		});
 		
-		Intent intent = getIntent();
-		
-		String url = intent.getStringExtra(Constant.BUNDLE_STRING_URL);
-        final float time = intent.getFloatExtra(Constant.BUNDLE_FLOAT_TIME, 0);
-        
-        mVideoView = (CustomVideoView) findViewById(R.id.video);
+		mVideoView = (CustomVideoView) findViewById(R.id.video);
         
         mVideoView.setOnPreparedListener(new OnPreparedListener() {
 
