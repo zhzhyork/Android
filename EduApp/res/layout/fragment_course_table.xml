@@ -12,7 +12,7 @@
         android:numColumns="8"
         android:columnWidth="@dimen/table_column_width"
         android:stretchMode="columnWidth"  
-        android:background="@android:color/black"
+        android:background="@color/course_table_border_color"
         android:horizontalSpacing="1dp"
         android:verticalSpacing="1dp"
         android:gravity="center" />

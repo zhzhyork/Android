@@ -37,5 +37,8 @@
     <dimen name="table_column_width">40dp</dimen>
     <dimen name="table_column_height_offset">17dp</dimen>
     <dimen name="table_key_width">110dp</dimen>
+    <dimen name="table_title_text_size">24sp</dimen>
+    <dimen name="table_group_text_size">22sp</dimen>
+    <dimen name="table_item_text_size">20sp</dimen>
 
 </resources>

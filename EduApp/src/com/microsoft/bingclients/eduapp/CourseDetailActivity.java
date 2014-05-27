@@ -22,9 +22,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class CourseDetailActivity extends ActionBarActivity {
@@ -41,8 +41,23 @@ public class CourseDetailActivity extends ActionBarActivity {
 		
 		for (int i = 0; i < courses.size(); i ++) {
 			if (courses.get(i).getName().equals(title)) {
-				ListView listView = (ListView) findViewById(R.id.list);
-				listView.setAdapter(new CourseAdapter(this, courses.get(i)));
+				Course course = courses.get(i);
+				TextView name = (TextView) findViewById(R.id.name);
+				name.setText(course.getName() + ": " + course.getTitle());
+				
+				TextView classes = (TextView) findViewById(R.id.classes);
+				ArrayList<String> classList = course.getClassList();
+				String className = classList.get(0);
+				for (int j = 1; j < classList.size(); j ++) {
+					className += ", " + classList.get(j);
+				}
+				classes.setText("Class: " + className);
+				
+				Spinner spinner = (Spinner) findViewById(R.id.spinner);
+				spinner.setAdapter(new SpinnerAdapter(this, course.getWords()));
+				
+				ExpandableListView listView = (ExpandableListView) findViewById(R.id.list);
+				listView.setAdapter(new CourseAdapter(this, course));
 				break;
 			}
 		}
@@ -71,41 +86,105 @@ public class CourseDetailActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 	
-	private class CourseAdapter extends BaseAdapter {
+	private class CourseAdapter extends BaseExpandableListAdapter {
 		
 		private Course mCourse;
-		
-		private CourseDetailActivity mActivity;
 
     	private LayoutInflater mInflater;
 
-		public CourseAdapter(CourseDetailActivity activity, Course course) {
-			mActivity = activity;
-            mInflater = LayoutInflater.from(activity);
+		public CourseAdapter(Context context, Course course) {
+            mInflater = LayoutInflater.from(context);
             mCourse = course;
         }
 		
 		@Override
+		public Object getChild(int groupPosition, int childPosititon) {
+			// TODO Auto-generated method stub
+			return mCourse.getValues().get(groupPosition);
+		}
+
+		@Override
+		public long getChildId(int groupPosition, int childPosititon) {
+			// TODO Auto-generated method stub
+			return childPosititon;
+		}
+
+		@Override
+		public View getChildView(int groupPosition, int childPosititon, boolean isLastChild, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+			convertView = mInflater.inflate(R.layout.list_course_item, null);
+			TextView value = (TextView) convertView.findViewById(R.id.value);
+			value.setText(mCourse.getValues().get(groupPosition));
+            return convertView;
+		}
+
+		@Override
+		public int getChildrenCount(int groupPosition) {
+			// TODO Auto-generated method stub
+			return 1;
+		}
+
+		@Override
+		public Object getGroup(int groupPosition) {
+			// TODO Auto-generated method stub
+			return mCourse.getKeys().get(groupPosition);
+		}
+
+		@Override
+		public int getGroupCount() {
+			// TODO Auto-generated method stub
+			return mCourse.getKeys().size();
+		}
+
+		@Override
+		public long getGroupId(int groupPosition) {
+			// TODO Auto-generated method stub
+			return groupPosition;
+		}
+
+		@Override
+		public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+            convertView = mInflater.inflate(R.layout.list_course_group, null);
+			TextView value = (TextView) convertView.findViewById(R.id.key);
+			value.setText(mCourse.getKeys().get(groupPosition));
+            return convertView;
+		}
+
+		@Override
+		public boolean hasStableIds() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean isChildSelectable(int groupPosition, int childPosition) {
+			// TODO Auto-generated method stub
+			return true;
+		}
+	}
+	
+	private class SpinnerAdapter extends BaseAdapter {
+		
+		private CourseDetailActivity mActivity;
+		
+		private ArrayList<String> mList;
+		
+		public SpinnerAdapter(Context context, ArrayList<String> list) {
+			mActivity = (CourseDetailActivity) context;
+			mList = list;
+		}
+		
+		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return mCourse.getKeys().size() + 4;
+			return mList.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
 			// TODO Auto-generated method stub
-			switch (position) {
-			case 0:
-				return mCourse.getName();
-			case 1:
-				return mCourse.getTitle();
-			case 2:
-				return mCourse.getClassList();
-			case 3:
-				return mCourse.getWords();
-			default:
-				return mCourse.getKeys().get(position - 4);
-			}
+			return mList.get(position);
 		}
 
 		@Override
@@ -117,78 +196,27 @@ public class CourseDetailActivity extends ActionBarActivity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			// TODO Auto-generated method stub
-			TextView key;
-			TextView value;
+			TextView tv = new TextView(mActivity);
+			final String word = mList.get(position);
+			tv.setTextSize(mActivity.getResources().getDimension(R.dimen.table_group_text_size));
+			tv.setPadding(10, 10, 10, 10);
+			tv.setText(word);
 			
-			switch (position) {
-			case 0:
-				convertView = mInflater.inflate(R.layout.course_detail_item, null);
-				key = (TextView) convertView.findViewById(R.id.key);
-				value = (TextView) convertView.findViewById(R.id.value);
-				
-				key.setText("Name");
-				value.setText(mCourse.getName());
-				break;
-			case 1:
-				convertView = mInflater.inflate(R.layout.course_detail_item, null);
-				key = (TextView) convertView.findViewById(R.id.key);
-				value = (TextView) convertView.findViewById(R.id.value);
-				
-				key.setText("Title");
-				value.setText(mCourse.getTitle());
-				break;
-			case 2:
-				convertView = mInflater.inflate(R.layout.course_detail_item, null);
-				key = (TextView) convertView.findViewById(R.id.key);
-				value = (TextView) convertView.findViewById(R.id.value);
-				
-				key.setText("Class");
-				ArrayList<String> classes = mCourse.getClassList();
-				String className = classes.get(0);
-				for (int i = 1; i < classes.size(); i ++) {
-					className += ", " + classes.get(i);
-				}
-				value.setText(className);
-				break;
-			case 3:
-				convertView = mInflater.inflate(R.layout.course_keyword_item, null);
-				key = (TextView) convertView.findViewById(R.id.key);
-				LinearLayout words = (LinearLayout) convertView.findViewById(R.id.words);
-				
-				key.setText("Key Words");
-				for (int j = 0; j < mCourse.getWords().size(); j ++) {
-					View view = mInflater.inflate(R.layout.course_keyword_button, null);
-					Button button = (Button) view.findViewById(R.id.button);
-					final String word = mCourse.getWords().get(j);
-					button.setText(word);
-					
-					button.setOnClickListener(new OnClickListener() {
+			tv.setOnClickListener(new OnClickListener() {
 
-						@Override
-						public void onClick(View view) {
-							// TODO Auto-generated method stub
-							mActivity.search(word);
-						}
-						
-					});
-					
-					words.addView(view);
+				@Override
+				public void onClick(View view) {
+					// TODO Auto-generated method stub
+					mActivity.search(word);
 				}
-				break;
-			default:
-				convertView = mInflater.inflate(R.layout.course_detail_item, null);
-				key = (TextView) convertView.findViewById(R.id.key);
-				value = (TextView) convertView.findViewById(R.id.value);
 				
-				key.setText(mCourse.getKeys().get(position - 4));
-				value.setText(mCourse.getValues().get(position - 4));
-				break;
-			}
+			});
 			
+			convertView = tv;
 			return convertView;
 		}
 	}
-	
+
 	public void search(String key) {
     	new SearchTask(this).execute(key); 
     }

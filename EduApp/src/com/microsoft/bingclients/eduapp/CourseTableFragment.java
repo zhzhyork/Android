@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -86,10 +87,9 @@ public class CourseTableFragment extends Fragment {
 			// TODO Auto-generated method stub
 			convertView = mInflater.inflate(R.layout.course_table_item, null);
 			
-			AbsListView.LayoutParams param = new AbsListView.LayoutParams(
-	                android.view.ViewGroup.LayoutParams.MATCH_PARENT,
-	                (int) (mContext.getResources().getDisplayMetrics().heightPixels / 5 
-	                - mContext.getResources().getDimension(R.dimen.table_column_height_offset)));
+			int height = (int) (mContext.getResources().getDisplayMetrics().heightPixels / 5 
+	                - mContext.getResources().getDimension(R.dimen.table_column_height_offset));
+			AbsListView.LayoutParams param = new AbsListView.LayoutParams(LayoutParams.MATCH_PARENT, height);
 	        convertView.setLayoutParams(param);
 			
 			TextView name = (TextView) convertView.findViewById(R.id.name);
@@ -124,23 +124,26 @@ public class CourseTableFragment extends Fragment {
 				name.setText("Sat");
 				break;
 			case 8:
-				name.setText("8:30-10:00");
+				name.setText("1");
 				break;
 			case 16:
-				name.setText("10:00-11:30");
+				name.setText("2");
 				break;
 			case 24:
-				name.setText("14:00-15:30");
+				name.setText("3");
 				break;
 			case 32:
-				name.setText("15:30-17:00");
+				name.setText("4");
 				break;
 			default:
 				final String strName = mCourses.get(position).getName();
 				name.setText(strName);
 				title.setText(mCourses.get(position).getTitle());
-				
+
 				if (strName != null && !strName.isEmpty()) {
+					convertView.setBackground(mContext.getResources().
+							getDrawable(R.xml.course_table_item_bg));
+					
 					convertView.setOnClickListener(new OnClickListener() {
 
 						@Override
@@ -153,6 +156,8 @@ public class CourseTableFragment extends Fragment {
 						}
 						
 					});
+				} else {
+					convertView.setBackgroundColor(mContext.getResources().getColor(android.R.color.white));
 				}
 				
 				break;

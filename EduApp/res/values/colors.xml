@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <color name="auth_button_background_color">#36b</color>
-    <color name="list_child_background_color">#ccc</color>
+    <color name="auth_button_background_color">#36B</color>
+    <color name="list_child_background_color">#DDD</color>
     <color name="comments_background_color">#80FFFFFF</color>
+    <color name="course_table_border_color">#CCC</color>
+    <color name="course_table_background_color">#F5F5F5</color>
+    
+    <color name="item_background_start_color">#EDEDED</color>
+    <color name="item_background_end_color">#CDCDCD</color>
+    <color name="button_pressed_background_color">#36B</color>
     
 </resources>
