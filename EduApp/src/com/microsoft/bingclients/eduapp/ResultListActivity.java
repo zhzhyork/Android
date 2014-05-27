@@ -27,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
@@ -37,9 +38,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class ResultListActivity extends ActionBarActivity implements OnQueryTextListener{
+public class ResultListActivity extends ActionBarActivity implements OnQueryTextListener {
 	
 	private SearchView mSearchView;
+	
+	private MenuItem mSearchMenuItem;
 	
 	private ExpandableListView mResultListView;
 	
@@ -110,12 +113,31 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
 	}
 	
 	@Override
+    public void onResume() {
+    	super.onResume();
+    	if (mSearchMenuItem != null) {
+    		mSearchMenuItem.collapseActionView();
+    	}
+    }
+	
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.result, menu);
-        
-        mSearchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        getMenuInflater().inflate(R.menu.main, menu);
+        mSearchMenuItem = menu.findItem(R.id.action_search);
+        mSearchView = (SearchView) mSearchMenuItem.getActionView();
+        mSearchView.setFocusable(false);
         mSearchView.setOnQueryTextListener(this);
+        mSearchView.setOnQueryTextFocusChangeListener(new OnFocusChangeListener() {
+
+			@Override
+			public void onFocusChange(View view, boolean hasFocus) {
+				// TODO Auto-generated method stub
+				if (!hasFocus) {
+					mSearchMenuItem.collapseActionView();
+                }
+			}
+        });
         
         return super.onCreateOptionsMenu(menu);
     }
@@ -145,8 +167,7 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
 	@Override
 	public boolean onQueryTextSubmit(String text) {
 		// TODO Auto-generated method stub
-		mSearchView.setIconified(true);
-		mSearchView.clearFocus();
+		mSearchMenuItem.collapseActionView();
 		
 		InputMethodManager imm = (InputMethodManager) getSystemService(
 			      Context.INPUT_METHOD_SERVICE);
@@ -368,6 +389,10 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			InputMethodManager imm = (InputMethodManager) getSystemService(
+				      Context.INPUT_METHOD_SERVICE);
+			imm.hideSoftInputFromWindow(mSearchView.getWindowToken(), 0);
+			
 			Intent intent = new Intent();
 			intent.setClass(mContext, VideoPlayerActivity.class);
 			intent.putExtra(Constant.BUNDLE_STRING_ID, mId);

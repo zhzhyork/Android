@@ -15,19 +15,27 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class CourseDetailActivity extends ActionBarActivity {
+public class CourseDetailActivity extends ActionBarActivity implements OnQueryTextListener {
+	
+	private SearchView mSearchView;
+	
+	private MenuItem mSearchMenuItem;
 	
 	@Override 
 	public void onCreate(Bundle savedInstanceState) { 
@@ -64,10 +72,33 @@ public class CourseDetailActivity extends ActionBarActivity {
 	}
 	
 	@Override
+    public void onResume() {
+    	super.onResume();
+    	if (mSearchMenuItem != null) {
+    		mSearchMenuItem.collapseActionView();
+    	}
+    }
+	
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        mSearchMenuItem = menu.findItem(R.id.action_search);
+        mSearchView = (SearchView) mSearchMenuItem.getActionView();
+        mSearchView.setFocusable(false);
+        mSearchView.setOnQueryTextListener(this);
+        mSearchView.setOnQueryTextFocusChangeListener(new OnFocusChangeListener() {
+
+			@Override
+			public void onFocusChange(View view, boolean hasFocus) {
+				// TODO Auto-generated method stub
+				if (!hasFocus) {
+					mSearchMenuItem.collapseActionView();
+                }
+			}
+        });
+        
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -85,6 +116,26 @@ public class CourseDetailActivity extends ActionBarActivity {
         
         return super.onOptionsItemSelected(item);
     }
+
+	@Override
+	public boolean onQueryTextChange(String text) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onQueryTextSubmit(String text) {
+		// TODO Auto-generated method stub
+		mSearchMenuItem.collapseActionView();
+		
+		InputMethodManager imm = (InputMethodManager) getSystemService(
+			      Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(mSearchView.getWindowToken(), 0);
+        
+		search(text);
+		
+		return false;
+	}
 	
 	private class CourseAdapter extends BaseExpandableListAdapter {
 		

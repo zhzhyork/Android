@@ -281,11 +281,11 @@ int id action_bar_root 0x7f06001a
 int id action_bar_subtitle 0x7f060023
 int id action_bar_title 0x7f060022
 int id action_context_bar 0x7f06001d
-int id action_logout 0x7f060055
+int id action_logout 0x7f060056
 int id action_menu_divider 0x7f060016
 int id action_menu_presenter 0x7f060017
 int id action_mode_close_button 0x7f060024
-int id action_search 0x7f060056
+int id action_search 0x7f060055
 int id activity_chooser_view_content 0x7f060025
 int id add 0x7f060052
 int id always 0x7f06000b
@@ -402,7 +402,6 @@ int layout video_comment 0x7f030025
 int layout video_comment_item 0x7f030026
 int layout video_player 0x7f030027
 int menu main 0x7f0d0000
-int menu result 0x7f0d0001
 int string abc_action_bar_home_description 0x7f0b0001
 int string abc_action_bar_up_description 0x7f0b0002
 int string abc_action_menu_overflow_description 0x7f0b0003
