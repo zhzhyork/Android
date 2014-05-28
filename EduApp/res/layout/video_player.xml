@@ -24,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="@dimen/video_button_margin_bottom"
-        android:text="@string/comment_button"/>
+        android:text="@string/comment_button" 
+        android:textSize="@dimen/video_comment_text_size" />
         
         <com.microsoft.bingclients.eduapp.views.CustomScrollView
             android:id="@+id/scrollView"

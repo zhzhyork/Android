@@ -217,11 +217,14 @@ public class CourseDetailActivity extends ActionBarActivity implements OnQueryTe
 	
 	private class SpinnerAdapter extends BaseAdapter {
 		
+		private LayoutInflater mInflater;
+		
 		private CourseDetailActivity mActivity;
 		
 		private ArrayList<String> mList;
 		
 		public SpinnerAdapter(Context context, ArrayList<String> list) {
+			mInflater = LayoutInflater.from(context);
 			mActivity = (CourseDetailActivity) context;
 			mList = list;
 		}
@@ -247,10 +250,10 @@ public class CourseDetailActivity extends ActionBarActivity implements OnQueryTe
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			// TODO Auto-generated method stub
-			TextView tv = new TextView(mActivity);
+			convertView = mInflater.inflate(R.layout.list_course_spinner, null);
+			TextView tv = (TextView) convertView.findViewById(R.id.spinner);
+			
 			final String word = mList.get(position);
-			tv.setTextSize(mActivity.getResources().getDimension(R.dimen.table_group_text_size));
-			tv.setPadding(10, 10, 10, 10);
 			tv.setText(word);
 			
 			tv.setOnClickListener(new OnClickListener() {

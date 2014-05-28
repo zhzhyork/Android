@@ -37,10 +37,12 @@
     
     <dimen name="table_column_width">40dp</dimen>
     <dimen name="table_column_height_offset">17dp</dimen>
+    <dimen name="table_group_padding">15dp</dimen>
     <dimen name="table_title_text_size">24sp</dimen>
     <dimen name="table_group_text_size">22sp</dimen>
     <dimen name="table_item_text_size">20sp</dimen>
     <dimen name="table_primary_text_size">18sp</dimen>
     <dimen name="table_secondary_text_size">16sp</dimen>
+    <dimen name="table_spinner_padding">10dp</dimen>
 
 </resources>
