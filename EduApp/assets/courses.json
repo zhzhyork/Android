@@ -13,7 +13,7 @@
             "Book": "Required Text: Computer Science: A Structured Programming Approach Using C\nAuthor: Behrouz A. Forouzan / Richard F. Gilberg\nPublisher: Brooks / Cole Thomas Learning",
             "Course Contents": "Intro to Computers, Algorithms & UNIX Systems\nI/O Commands : printf, scanf\nFunctions\nIf & Switch Statements\nDebugging Techniques & Software\nTest 1=> Section 1: Sep. 28 Section 2: Sep. 29 Section 3: Sep. 28 **\nLoops\nDesign for Large Amounts of Data\n1D & Multidimensional Arrays\nTest 2=> Section 1:Oct. 26 Section 2: Oct. 27 Section 3: Oct. 26 **\nPointers & Memory Addresses\nArrays & Strings\nStructures\nTest 3=> Section 1: Nov. 21 Section 2: Nov. 22 Section 3: Nov 21 **\nBinary Files\n\n** The lab exercises/quizzes will cover materials from lectures covered in the current or previous weeks.",
             "Examination": "Midterms: Week 6, 9, 13\n\nFinal:\nSection 1 ( 2:00-03:15 MW) :  Friday, Dec. 9, 2:00-4:00 p.m.\nSection 2 ( 2:00 - 3:15 T Th) :  Monday, Dec. 12, 2:00-4:00 p.m.\nSection 3 ( 3:30-04:50 M W) :  Thursday, Dec. 8, 2:00-4:00 p.m.",
-            "Key Words": ["Pointers", "Algorithms", "Memory Addresses", "Binary Files"]
+            "Key Words": ["Server SDK", "Javascript", "Pointers", "Binary Files"]
         },
         {
             "Name": "CSE341",

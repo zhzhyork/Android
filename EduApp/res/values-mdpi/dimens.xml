@@ -33,12 +33,14 @@
     <dimen name="video_button_margin_bottom">20dp</dimen>
     <dimen name="video_block_width">205dp</dimen>
     <dimen name="video_comment_width">200dp</dimen>
+    <dimen name="video_comment_text_size">18sp</dimen>
     
     <dimen name="table_column_width">40dp</dimen>
     <dimen name="table_column_height_offset">17dp</dimen>
-    <dimen name="table_key_width">110dp</dimen>
     <dimen name="table_title_text_size">24sp</dimen>
     <dimen name="table_group_text_size">22sp</dimen>
     <dimen name="table_item_text_size">20sp</dimen>
+    <dimen name="table_primary_text_size">18sp</dimen>
+    <dimen name="table_secondary_text_size">16sp</dimen>
 
 </resources>

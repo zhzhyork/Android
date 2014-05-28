@@ -2,7 +2,7 @@ package com.microsoft.bingclients.eduapp.models;
 
 public class Constant {
 	
-	public static final String MAVIS_URL = "http://audiosearchsite.cloudapp.net/audiosearch_demo/executequery.aspx?index=MSNVideo&q=%s&n=%s&generatesnippets=1";
+	public static final String MAVIS_URL = "http://www.msravs.com//audiosearch_demo/executequery.aspx?index=MSNVideo&q=%s&n=%s&generatesnippets=1";
 
 	public static final String MAVIS_URL_ROOT = "http://audiosearchsite.cloudapp.net/audiosearch_demo/";
 
