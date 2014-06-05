@@ -25,13 +25,24 @@
     <dimen name="list_title_text_size">16sp</dimen>
     <dimen name="list_description_text_size">16sp</dimen>
     
-    <dimen name="video_container_height">238dp</dimen>
-    <dimen name="video_gallery_height">102dp</dimen>
+    <dimen name="video_container_height">318dp</dimen>
+    <dimen name="video_gallery_height">182dp</dimen>
     <dimen name="video_pointer_height">68dp</dimen>
     <dimen name="video_pointer_margin">60dp</dimen>
     <dimen name="video_gallery_margin_bottom">20dp</dimen>
     <dimen name="video_button_margin_bottom">20dp</dimen>
-    <dimen name="video_block_width">95dp</dimen>
-    <dimen name="video_comment_width">90dp</dimen>
+    <dimen name="video_block_width">120dp</dimen>
+    <dimen name="video_comment_width">115dp</dimen>
+    <dimen name="video_comment_text_size">14sp</dimen>
+    
+    <dimen name="table_column_width">40dp</dimen>
+    <dimen name="table_column_height_offset">15.25dp</dimen>
+    <dimen name="table_group_padding">10dp</dimen>
+    <dimen name="table_title_text_size">18sp</dimen>
+    <dimen name="table_group_text_size">16sp</dimen>
+    <dimen name="table_item_text_size">14sp</dimen>
+    <dimen name="table_primary_text_size">10sp</dimen>
+    <dimen name="table_secondary_text_size">10sp</dimen>
+    <dimen name="table_spinner_padding">5dp</dimen>
 
 </resources>
