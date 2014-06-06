@@ -3,10 +3,14 @@
 
     <string name="app_name">EduApp</string>
     <string name="hello_world">Hello world!</string>
+    <string name="action_clear">Clear history</string>
     <string name="action_logout">Sign out</string>
     <string name="auth_username_hint">Username</string>
     <string name="auth_password_hint">Password</string>
     <string name="auth_button_text">Sign in</string>
+    
+    <string name="course_table_tab">Course Table</string>
+    <string name="search_history_tab">Watch History (%s)</string>
     
     <string name="course_keyword">Key Words</string>
     

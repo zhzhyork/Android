@@ -19,8 +19,8 @@
     <dimen name="auth_button_width">120dp</dimen>
     <dimen name="auth_button_margin_top">25dp</dimen>
     
-    <dimen name="list_image_width">116.5dp</dimen>
-    <dimen name="list_image_height">75dp</dimen>
+    <dimen name="list_image_width">155.3dp</dimen>
+    <dimen name="list_image_height">100dp</dimen>
     <dimen name="list_image_text_size">14sp</dimen>
     <dimen name="list_title_text_size">16sp</dimen>
     <dimen name="list_description_text_size">16sp</dimen>
@@ -36,7 +36,7 @@
     <dimen name="video_comment_text_size">14sp</dimen>
     
     <dimen name="table_column_width">40dp</dimen>
-    <dimen name="table_column_height_offset">15.25dp</dimen>
+    <dimen name="table_column_height_offset">25dp</dimen>
     <dimen name="table_group_padding">10dp</dimen>
     <dimen name="table_title_text_size">18sp</dimen>
     <dimen name="table_group_text_size">16sp</dimen>

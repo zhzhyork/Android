@@ -16,23 +16,46 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 
-public class MainActivity extends ActionBarActivity implements OnQueryTextListener {
+public class AuthenticationActivity extends ActionBarActivity implements OnQueryTextListener {
 	
 	private SearchView mSearchView;
 	
 	private MenuItem mSearchMenuItem;
 	
+	private EditText mUsernameEditText;
+	
+	private EditText mPasswordEditText;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_auth);
+        
+        mUsernameEditText = (EditText) findViewById(R.id.username);
+        mPasswordEditText = (EditText) findViewById(R.id.password);
+        Button signinButton = (Button) findViewById(R.id.signin);
+        signinButton.setOnClickListener(new OnClickListener() {
 
-        if (savedInstanceState == null) {
-        	signOut();
-        }
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				String username = mUsernameEditText.getText().toString();
+				String password = mPasswordEditText.getText().toString();
+				
+				InputMethodManager imm = (InputMethodManager) getSystemService(
+					      Context.INPUT_METHOD_SERVICE);
+				imm.hideSoftInputFromWindow(mPasswordEditText.getWindowToken(), 0);
+					
+				signIn(username, password);
+			}
+        	
+        });
     }
     
     @Override
@@ -40,15 +63,6 @@ public class MainActivity extends ActionBarActivity implements OnQueryTextListen
     	super.onResume();
     	if (mSearchMenuItem != null) {
     		mSearchMenuItem.collapseActionView();
-    	}
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-    	super.onNewIntent(intent);
-    	
-    	if (Constant.ACTION_SIGN_OUT.equals(intent.getAction())) {
-    		signOut();
     	}
     }
     
@@ -81,7 +95,6 @@ public class MainActivity extends ActionBarActivity implements OnQueryTextListen
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_logout) {
-        	signOut();
             return true;
         }
         
@@ -109,15 +122,9 @@ public class MainActivity extends ActionBarActivity implements OnQueryTextListen
 	}
     
     public void signIn(String username, String password) {
-    	getSupportFragmentManager().beginTransaction()
-        		.replace(R.id.container, CourseTableFragment.newInstance())
-        		.commit();
-    }
-    
-    private void signOut() {
-    	getSupportFragmentManager().beginTransaction()
-				.replace(R.id.container, AuthenticationFragment.newInstance())
-				.commit();
+    	Intent intent = new Intent();
+		intent.setClass(this, OverviewActivity.class);
+		startActivity(intent);
     }
     
     public void search(String key) {

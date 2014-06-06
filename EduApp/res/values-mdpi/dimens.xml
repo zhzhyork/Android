@@ -36,7 +36,7 @@
     <dimen name="video_comment_text_size">18sp</dimen>
     
     <dimen name="table_column_width">40dp</dimen>
-    <dimen name="table_column_height_offset">17dp</dimen>
+    <dimen name="table_column_height_offset">26.1dp</dimen>
     <dimen name="table_group_padding">15dp</dimen>
     <dimen name="table_title_text_size">24sp</dimen>
     <dimen name="table_group_text_size">22sp</dimen>

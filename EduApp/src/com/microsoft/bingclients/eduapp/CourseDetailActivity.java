@@ -108,7 +108,8 @@ public class CourseDetailActivity extends ActionBarActivity implements OnQueryTe
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_logout) {
-        	Intent intent = new Intent(Constant.ACTION_SIGN_OUT);
+        	Intent intent = new Intent();
+    		intent.setClass(this, AuthenticationActivity.class);
     		startActivity(intent);
         	finish();
             return true;

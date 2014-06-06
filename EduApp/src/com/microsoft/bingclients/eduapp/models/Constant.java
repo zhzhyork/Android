@@ -2,12 +2,10 @@ package com.microsoft.bingclients.eduapp.models;
 
 public class Constant {
 	
-	public static final String MAVIS_URL = "http://www.msravs.com//audiosearch_demo/executequery.aspx?index=MSNVideo&q=%s&n=%s&generatesnippets=1";
-
-	public static final String MAVIS_URL_ROOT = "http://audiosearchsite.cloudapp.net/audiosearch_demo/";
-
-	public static final String ACTION_SIGN_OUT = "com.microsoft.bingclients.eduapp.SIGN_OUT";
+	public static final String MAVIS_URL_ROOT = "http://www.msravs.com/audiosearch_demo/";
 	
+	public static final String MAVIS_URL = MAVIS_URL_ROOT + "executequery.aspx?index=MSNVideo&q=%s&n=%s&generatesnippets=1";
+
 	public static final String BUNDLE_STRING_TITLE = "title";
 	
 	public static final String BUNDLE_STRING_VIDEO = "video";
@@ -25,5 +23,7 @@ public class Constant {
     public static final String BUNDLE_STRING_URL = "Url";
 	
 	public static final String BUNDLE_FLOAT_TIME = "Time";
+	
+	public static final String HISTORY_SHARED_PREFERENCES = "history";
 	
 }

@@ -9,12 +9,14 @@ import com.microsoft.bingclients.eduapp.models.SearchQuery;
 import com.microsoft.bingclients.eduapp.models.SearchSnippet;
 import com.microsoft.bingclients.eduapp.utils.ImageDownloader;
 import com.microsoft.bingclients.eduapp.utils.RssReader;
+import com.microsoft.bingclients.eduapp.utils.StringConverter;
 import com.microsoft.bingclients.eduapp.models.Constant;
 import com.microsoft.bingclients.eduapp.models.SearchResults;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -149,7 +151,8 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_logout) {
-        	Intent intent = new Intent(Constant.ACTION_SIGN_OUT);
+        	Intent intent = new Intent();
+    		intent.setClass(this, AuthenticationActivity.class);
     		startActivity(intent);
         	finish();
             return true;
@@ -330,8 +333,7 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
             	duration.setText(mList.get(groupPosition).getDuration());
             	title.setText(mList.get(groupPosition).getTitle());
             	
-            	image.setOnClickListener(new PlayButtonListener(mContext, mList.get(groupPosition).getId(), 
-            			mList.get(groupPosition).getUrl(), 0));
+            	image.setOnClickListener(new PlayButtonListener(mContext, mList.get(groupPosition), 0));
             	
             	for (int i = 0; i < mList.get(groupPosition).getSnippets().size(); i ++) {
             		SearchSnippet snippet = mList.get(groupPosition).getSnippets().get(i);
@@ -346,8 +348,7 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
                     play.setText("Play from: " + String.format("%02d:%02d:%02d", intTime/3600, (intTime%3600)/60, (intTime%60)));
                     play.setFocusable(false);
                     
-                    play.setOnClickListener(new PlayButtonListener(mContext, mList.get(groupPosition).getId(), 
-                    		mList.get(groupPosition).getUrl(), floatTime));
+                    play.setOnClickListener(new PlayButtonListener(mContext, mList.get(groupPosition), floatTime));
                     
                     group.addView(snippetView);
             	}
@@ -371,18 +372,15 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
     
     private class PlayButtonListener implements OnClickListener {
 
-    	private String mId;
-    	
-    	private String mUrl;
+    	private SearchItem mItem;
     	
     	private float mTime;
     	
     	private Context mContext;
     	
-    	public PlayButtonListener(Context context, String id, String url, float time) {
+    	public PlayButtonListener(Context context, SearchItem item, float time) {
     		mContext = context;
-    		mId = id;
-    		mUrl = url;
+    		mItem = item;
     		mTime = time;
     	}
     	
@@ -393,10 +391,13 @@ public class ResultListActivity extends ActionBarActivity implements OnQueryText
 				      Context.INPUT_METHOD_SERVICE);
 			imm.hideSoftInputFromWindow(mSearchView.getWindowToken(), 0);
 			
+			SharedPreferences history = getSharedPreferences(Constant.HISTORY_SHARED_PREFERENCES, 0);
+			history.edit().putString(mItem.getId(), StringConverter.convertSearchItemToString(mItem)).commit();
+			
 			Intent intent = new Intent();
 			intent.setClass(mContext, VideoPlayerActivity.class);
-			intent.putExtra(Constant.BUNDLE_STRING_ID, mId);
-			intent.putExtra(Constant.BUNDLE_STRING_URL, mUrl);
+			intent.putExtra(Constant.BUNDLE_STRING_ID, mItem.getId());
+			intent.putExtra(Constant.BUNDLE_STRING_URL, mItem.getUrl());
 			intent.putExtra(Constant.BUNDLE_FLOAT_TIME, mTime);
 			mContext.startActivity(intent);
 		}

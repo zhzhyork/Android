@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.microsoft.bingclients.eduapp.MainActivity"
+            android:name="com.microsoft.bingclients.eduapp.AuthenticationActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
             android:launchMode="singleTask" >
@@ -25,10 +25,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="com.microsoft.bingclients.eduapp.SIGN_OUT" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.microsoft.bingclients.eduapp.OverviewActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTask" >
         </activity>
         
         <activity
