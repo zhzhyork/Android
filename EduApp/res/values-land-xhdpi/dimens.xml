@@ -1,0 +1,5 @@
+<resources>
+
+    <dimen name="table_column_height_offset">14dp</dimen>
+
+</resources>
