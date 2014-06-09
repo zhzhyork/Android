@@ -4,7 +4,7 @@ public class Constant {
 	
 	public static final String MAVIS_URL_ROOT = "http://www.msravs.com/audiosearch_demo/";
 	
-	public static final String MAVIS_URL = MAVIS_URL_ROOT + "executequery.aspx?index=MSNVideo&q=%s&n=%s&generatesnippets=1";
+	public static final String MAVIS_URL = MAVIS_URL_ROOT + "executequery.aspx?index=All&q=%s&n=%s&generatesnippets=1";
 
 	public static final String BUNDLE_STRING_TITLE = "title";
 	

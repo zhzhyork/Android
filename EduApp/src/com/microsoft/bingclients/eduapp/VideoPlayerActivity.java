@@ -106,7 +106,6 @@ public class VideoPlayerActivity extends Activity {
 			public boolean onError(MediaPlayer player, int what, int extra) {
 				// TODO Auto-generated method stub
 				mProgressDialog.dismiss();
-				finish();
 				return false;
 			}
         	
