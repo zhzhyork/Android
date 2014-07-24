@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BevMo</string>
+    <string name="app_name">Video search</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_search">Search through videos</string>
     <string name="search_history">History</string>
-
+    <string name="no_result">No result found</string>
+    
 </resources>

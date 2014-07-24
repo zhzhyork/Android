@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/wallpaper">
+    
+    <LinearLayout
+        android:id="@+id/container"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="@dimen/search_box_margin_top"
+	    android:orientation="horizontal"
+	    android:paddingLeft="20dp" 
+	    android:paddingRight="20dp" >
+	    
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="0dp"
+	        android:focusable="true"
+	        android:focusableInTouchMode="true" >
+	
+	        <TextView
+	            android:layout_width="0dp"
+	            android:layout_height="0dp" />
+	        
+	    </LinearLayout>
+    
+	    <EditText
+	        android:id="@+id/key"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1.0"
+	        android:padding="10dp"
+	        android:layout_marginRight="5dp"
+	        android:singleLine="true"
+	        android:imeOptions="actionNext"
+	        android:background="@drawable/rounded_edittext"
+	        android:hint="@string/action_search" />
+	
+	    <Button
+	        android:id="@+id/search"
+	        android:layout_width="@dimen/search_icon_size"
+	        android:layout_height="@dimen/search_icon_size"
+	        android:background="@drawable/ic_action_search" />
+	
+	</LinearLayout>
+	
+    <ListView 
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:groupIndicator="@null" />
+    
+</LinearLayout>
